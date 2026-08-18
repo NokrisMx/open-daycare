@@ -1,6 +1,6 @@
 # SPEC 01 — Home visual del feed
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** Ninguna
 > **Fecha:** 2026-08-18
 > **Objetivo:** Reemplazar la pantalla inicial en `/` por una réplica visual estática y adaptable de `references/pantallas/feed.dc.html`, sin autenticación, persistencia ni navegación funcional.
