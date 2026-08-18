@@ -30,11 +30,12 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Keep screenshots and all Playwright artifacts under `.playwright-mcp/`; the directory contents are gitignored.
 - Use Context7 for current framework documentation; for installed Next.js behavior, prefer the version-matched local guides required above.
 
-## Spec Driven Development - Skills
+## Spec Driven Development
 
-- /spec Usaremos esta skill para crear las especificaciones.
-- /spec-impl Usaremos esta skill para realizar las implementaciones.
+- `/spec` usa la skill de especificaciones para crear y aprobar una spec antes de implementar.
+- `/spec-impl` usa la skill de implementación para desarrollar una spec aprobada paso a paso.
+- `@spec-verifier @specs/<spec>.md` invoca directamente el agente `spec-verifier` para validar la fidelidad funcional y visual, ejecutar las verificaciones requeridas y reportar riesgos residuales.
 
 ## Reglas de Código
 
-- Usar código limpio, nombres, funciones, variables, etc en inglés.
+- Usar código limpio, nombres, funciones, variables, etc en inglés y pensar en componentes.

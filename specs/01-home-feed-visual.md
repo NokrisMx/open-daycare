@@ -43,17 +43,17 @@ Esta funcionalidad no introduce estructuras de datos nuevas. El contenido de mue
 
 ## Criterios de aceptación
 
-- [ ] La ruta `/` carga el feed sin errores en la consola del navegador.
-- [ ] En escritorio se muestran un sidebar de 248 px, un contenido central con ancho máximo de 760 px y el fondo `#F6ECDF` de la referencia.
-- [ ] La composición de escritorio coincide con `references/pantallas/feed.dc.html` y `references/screenshots/feed.png` en estructura, contenido, tipografías, colores, bordes, sombras, radios y espaciados; solo se admiten diferencias de rasterizado de fuentes y antialiasing.
-- [ ] El contenido visible reproduce literalmente las tres publicaciones, sus horarios, destinatarios, textos, etiquetas y contadores.
-- [ ] El sidebar permanece visible mientras el área principal se desplaza en un viewport de escritorio.
-- [ ] Ningún control cambia la URL, abre una ruta, modifica contenido o realiza una solicitud a una API.
-- [ ] A 390 px de ancho el sidebar no se muestra, el feed ocupa el ancho disponible y no existe desbordamiento horizontal.
-- [ ] La implementación no incorpora estado de cliente, autenticación, persistencia, componentes adicionales, assets adicionales ni dependencias nuevas.
-- [ ] Los únicos archivos de aplicación modificados son `app/page.tsx`, `app/layout.tsx` y `app/globals.css`.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] La ruta `/` carga el feed sin errores en la consola del navegador.
+- [x] En escritorio se muestran un sidebar de 248 px, un contenido central con ancho máximo de 760 px y el fondo `#F6ECDF` de la referencia.
+- [x] La composición de escritorio coincide con `references/pantallas/feed.dc.html` y `references/screenshots/feed.png` en estructura, contenido, tipografías, colores, bordes, sombras, radios y espaciados; solo se admiten diferencias de rasterizado de fuentes y antialiasing.
+- [x] El contenido visible reproduce literalmente las tres publicaciones, sus horarios, destinatarios, textos, etiquetas y contadores.
+- [x] El sidebar permanece visible mientras el área principal se desplaza en un viewport de escritorio.
+- [x] Ningún control cambia la URL, abre una ruta, modifica contenido o realiza una solicitud a una API.
+- [x] A 390 px de ancho el sidebar no se muestra, el feed ocupa el ancho disponible y no existe desbordamiento horizontal.
+- [x] La implementación no incorpora estado de cliente, autenticación, persistencia, componentes adicionales, assets adicionales ni dependencias nuevas.
+- [x] Los únicos archivos de aplicación modificados son `app/page.tsx`, `app/layout.tsx` y `app/globals.css`.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 

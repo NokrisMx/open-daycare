@@ -134,11 +134,11 @@ export default function Home() {
 
         <div className="mt-2.5 border-t border-[#ECE0D0] pt-3.5">
           <div className="flex items-center gap-[11px] px-2 py-1.5">
-            <div className="font-display flex size-[38px] shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-base font-semibold text-white">
+            <div className="font-display flex size-[38px] shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-[16px] font-semibold text-white">
               C
             </div>
             <div className="min-w-0 flex-1">
-              <div className="truncate text-sm font-extrabold text-[#3F362E]">
+              <div className="truncate text-[14px] font-extrabold text-[#3F362E]">
                 Caro Giménez
               </div>
               <div className="text-xs text-[#A89A8B]">Maestra · Soles</div>
@@ -185,7 +185,7 @@ export default function Home() {
             type="button"
             className="mb-6 flex w-full items-center gap-3.5 rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-3.5 py-3.5 text-left shadow-[0_4px_14px_-10px_rgba(120,90,60,0.4)] md:px-[18px]"
           >
-            <span className="font-display flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-base font-semibold text-white">
+            <span className="font-display flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-[16px] font-semibold text-white">
               C
             </span>
             <span className="flex-1 text-[15px] text-[#A89A8B]">
@@ -247,7 +247,7 @@ export default function Home() {
               </p>
 
               <footer className="mt-4 flex items-center gap-[18px] border-t border-[#F0E6D8] pt-3.5">
-                <span className="flex items-center gap-[7px] text-sm font-bold text-[#E0654A]">
+                <span className="flex items-center gap-[7px] text-[14px] font-bold text-[#E0654A]">
                   <svg
                     aria-hidden="true"
                     width="19"
@@ -266,7 +266,7 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label="1 comentario"
-                  className="flex items-center gap-[7px] text-sm font-bold text-[#94887B]"
+                  className="flex items-center gap-[7px] text-[14px] font-bold text-[#94887B]"
                 >
                   <svg
                     aria-hidden="true"
@@ -286,7 +286,7 @@ export default function Home() {
                 <span className="flex-1" />
                 <button
                   type="button"
-                  className="text-sm font-extrabold text-[#C5503A]"
+                  className="text-[14px] font-extrabold text-[#C5503A]"
                 >
                   Editar
                 </button>
@@ -347,7 +347,7 @@ export default function Home() {
               </button>
 
               <footer className="mt-4 flex items-center gap-[18px] border-t border-[#F0E6D8] pt-3.5">
-                <span className="flex items-center gap-[7px] text-sm font-bold text-[#E0654A]">
+                <span className="flex items-center gap-[7px] text-[14px] font-bold text-[#E0654A]">
                   <svg
                     aria-hidden="true"
                     width="19"
@@ -366,7 +366,7 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label="2 comentarios"
-                  className="flex items-center gap-[7px] text-sm font-bold text-[#94887B]"
+                  className="flex items-center gap-[7px] text-[14px] font-bold text-[#94887B]"
                 >
                   <svg
                     aria-hidden="true"
@@ -386,7 +386,7 @@ export default function Home() {
                 <span className="flex-1" />
                 <button
                   type="button"
-                  className="text-sm font-extrabold text-[#C5503A]"
+                  className="text-[14px] font-extrabold text-[#C5503A]"
                 >
                   Editar
                 </button>
@@ -435,7 +435,7 @@ export default function Home() {
               </p>
 
               <footer className="mt-4 flex items-center gap-[18px] border-t border-[#F0E6D8] pt-3.5">
-                <span className="flex items-center gap-[7px] text-sm font-bold text-[#E0654A]">
+                <span className="flex items-center gap-[7px] text-[14px] font-bold text-[#E0654A]">
                   <svg
                     aria-hidden="true"
                     width="19"
@@ -454,7 +454,7 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label="0 comentarios"
-                  className="flex items-center gap-[7px] text-sm font-bold text-[#94887B]"
+                  className="flex items-center gap-[7px] text-[14px] font-bold text-[#94887B]"
                 >
                   <svg
                     aria-hidden="true"
@@ -474,7 +474,7 @@ export default function Home() {
                 <span className="flex-1" />
                 <button
                   type="button"
-                  className="text-sm font-extrabold text-[#C5503A]"
+                  className="text-[14px] font-extrabold text-[#C5503A]"
                 >
                   Editar
                 </button>
