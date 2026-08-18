@@ -80,7 +80,8 @@ export function MobileNavigation(props: MobileNavigationProps) {
     );
     const previousOverflowY = mainElement?.style.overflowY;
     const wasFeedInert = feedContent?.inert ?? false;
-    const previousAriaHidden = feedContent?.getAttribute("aria-hidden");
+    const previousAriaHidden =
+      feedContent?.getAttribute("aria-hidden") ?? null;
 
     if (mainElement) {
       mainElement.style.overflowY = "hidden";
@@ -185,11 +186,11 @@ export function MobileNavigation(props: MobileNavigationProps) {
       <button
         type="button"
         aria-label="Cerrar menú"
-        aria-hidden={!isOpen}
+        aria-hidden="true"
         inert={!isOpen}
         tabIndex={-1}
         onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 z-30 bg-[#3F362E]/35 transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden ${
+        className={`fixed inset-0 z-[45] bg-[#3F362E]/35 transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden ${
           isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       />

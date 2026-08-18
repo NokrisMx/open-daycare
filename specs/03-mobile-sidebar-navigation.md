@@ -1,6 +1,6 @@
 # SPEC 03 — Navegación móvil del sidebar
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01, SPEC 02
 > **Fecha:** 2026-08-18
 > **Objetivo:** Añadir por debajo de 768 px una barra superior sticky con un menú hamburguesa que abra el contenido completo del sidebar en un drawer modal accesible, sin habilitar navegación ni alterar la vista de escritorio.
@@ -78,30 +78,30 @@ type SidebarContentProps = SidebarProps & {
 
 ## Criterios de aceptación
 
-- [ ] `components/feed/sidebar.tsx` exporta `SidebarItem`, `SidebarProps` y `SidebarContent`, y tanto `Sidebar` como `MobileNavigation` reutilizan el mismo contenido.
-- [ ] `components/feed/mobile-navigation.tsx` es el único archivo nuevo y el único componente que incorpora `"use client"`, estado o efectos.
-- [ ] `app/page.tsx` define una sola constante con las props del sidebar y la entrega a las variantes de escritorio y móvil.
-- [ ] Por debajo de 768 px el sidebar de escritorio permanece oculto y se muestra una barra superior sticky dentro del scroll de `main`.
-- [ ] La barra móvil muestra la marca OpenDayCare a la izquierda y una hamburguesa con etiqueta accesible a la derecha.
-- [ ] Al pulsar la hamburguesa aparece desde la izquierda un drawer de 248 px sobre el feed y un overlay cubre el espacio restante.
-- [ ] El drawer reproduce una sola vez la marca, la sala, nueva publicación, Feed, Niños, Avisos, Mi cuenta, el perfil y cerrar sesión del sidebar actual.
-- [ ] El drawer muestra una X en la cabecera de la marca sin alterar esa cabecera en escritorio.
-- [ ] La hamburguesa expone `aria-expanded` y `aria-controls`, y el panel comunica semánticamente que es una navegación modal.
-- [ ] Al abrir, el foco pasa al botón X y no puede desplazarse mediante teclado hacia controles situados detrás del modal.
-- [ ] Al cerrar, el foco vuelve a la hamburguesa que abrió el drawer.
-- [ ] El botón X, la tecla Escape y una pulsación sobre el overlay cierran el drawer.
-- [ ] Pulsar nueva publicación, un ítem de navegación, el perfil o cerrar sesión no cambia la URL, no ejecuta una acción y no cierra el drawer.
-- [ ] Mientras el drawer está abierto el feed no recibe interacción ni se desplaza, y el drawer permite scroll vertical cuando su contenido excede la altura disponible.
-- [ ] El drawer inicia cerrado en cada carga, no usa `localStorage` ni `sessionStorage` y se cierra al cambiar a un ancho de 768 px o superior.
-- [ ] El panel se desliza lateralmente y el overlay se atenúa durante una transición breve; con `prefers-reduced-motion` ambos cambios ocurren sin movimiento.
-- [ ] A 390 y 767 px la barra y el drawer caben sin desbordamiento horizontal, sin cubrir permanentemente el contenido y sin ocultar controles del sidebar.
-- [ ] A 768 y 924 px no se muestra la barra móvil ni el drawer, y el sidebar, el feed y su scroll conservan exactamente la presentación aprobada en SPEC 02.
-- [ ] Ningún control cambia la URL, abre una ruta, modifica contenido o realiza solicitudes de red.
-- [ ] Los únicos archivos de aplicación creados o modificados son `components/feed/mobile-navigation.tsx`, `components/feed/sidebar.tsx` y `app/page.tsx`.
-- [ ] No se incorporan dependencias, assets, configuración adicional, estilos globales ni infraestructura de pruebas.
-- [ ] La consola del navegador no muestra errores al cargar ni al operar el menú móvil.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] `components/feed/sidebar.tsx` exporta `SidebarItem`, `SidebarProps` y `SidebarContent`, y tanto `Sidebar` como `MobileNavigation` reutilizan el mismo contenido.
+- [x] `components/feed/mobile-navigation.tsx` es el único archivo nuevo y el único componente que incorpora `"use client"`, estado o efectos.
+- [x] `app/page.tsx` define una sola constante con las props del sidebar y la entrega a las variantes de escritorio y móvil.
+- [x] Por debajo de 768 px el sidebar de escritorio permanece oculto y se muestra una barra superior sticky dentro del scroll de `main`.
+- [x] La barra móvil muestra la marca OpenDayCare a la izquierda y una hamburguesa con etiqueta accesible a la derecha.
+- [x] Al pulsar la hamburguesa aparece desde la izquierda un drawer de 248 px sobre el feed y un overlay cubre el espacio restante.
+- [x] El drawer reproduce una sola vez la marca, la sala, nueva publicación, Feed, Niños, Avisos, Mi cuenta, el perfil y cerrar sesión del sidebar actual.
+- [x] El drawer muestra una X en la cabecera de la marca sin alterar esa cabecera en escritorio.
+- [x] La hamburguesa expone `aria-expanded` y `aria-controls`, y el panel comunica semánticamente que es una navegación modal.
+- [x] Al abrir, el foco pasa al botón X y no puede desplazarse mediante teclado hacia controles situados detrás del modal.
+- [x] Al cerrar, el foco vuelve a la hamburguesa que abrió el drawer.
+- [x] El botón X, la tecla Escape y una pulsación sobre el overlay cierran el drawer.
+- [x] Pulsar nueva publicación, un ítem de navegación, el perfil o cerrar sesión no cambia la URL, no ejecuta una acción y no cierra el drawer.
+- [x] Mientras el drawer está abierto el feed no recibe interacción ni se desplaza, y el drawer permite scroll vertical cuando su contenido excede la altura disponible.
+- [x] El drawer inicia cerrado en cada carga, no usa `localStorage` ni `sessionStorage` y se cierra al cambiar a un ancho de 768 px o superior.
+- [x] El panel se desliza lateralmente y el overlay se atenúa durante una transición breve; con `prefers-reduced-motion` ambos cambios ocurren sin movimiento.
+- [x] A 390 y 767 px la barra y el drawer caben sin desbordamiento horizontal, sin cubrir permanentemente el contenido y sin ocultar controles del sidebar.
+- [x] A 768 y 924 px no se muestra la barra móvil ni el drawer, y el sidebar, el feed y su scroll conservan exactamente la presentación aprobada en SPEC 02.
+- [x] Ningún control cambia la URL, abre una ruta, modifica contenido o realiza solicitudes de red.
+- [x] Los únicos archivos de aplicación creados o modificados son `components/feed/mobile-navigation.tsx`, `components/feed/sidebar.tsx` y `app/page.tsx`.
+- [x] No se incorporan dependencias, assets, configuración adicional, estilos globales ni infraestructura de pruebas.
+- [x] La consola del navegador no muestra errores al cargar ni al operar el menú móvil.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 

@@ -57,7 +57,7 @@ export default function Home() {
     <div className="flex min-h-screen bg-[#F6ECDF]">
       <Sidebar {...sidebarProps} />
 
-      <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
+      <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable]">
         <MobileNavigation {...sidebarProps} />
 
         <div
