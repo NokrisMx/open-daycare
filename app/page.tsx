@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div className="flex min-h-screen bg-[#F6ECDF]">
-      <aside className="sticky top-0 flex h-screen w-[248px] shrink-0 flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6">
+      <aside className="sticky top-0 hidden h-screen w-[248px] shrink-0 flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:flex">
         <div className="flex items-center gap-[11px] px-2 pt-1 pb-[22px]">
           <div className="flex size-[38px] shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(155deg,#F8C3A8,#F2937A)]">
             <svg
@@ -167,8 +167,8 @@ export default function Home() {
         </div>
       </aside>
 
-      <main className="h-screen min-w-0 flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-[760px] px-10 pt-[34px] pb-20">
+      <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
+        <div className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20">
           <header className="mb-6">
             <div className="mb-1 text-[12.5px] font-extrabold tracking-[0.8px] text-[#D9583C]">
               GUARDERÍA · SALA SOLES
@@ -183,7 +183,7 @@ export default function Home() {
 
           <button
             type="button"
-            className="mb-6 flex w-full items-center gap-3.5 rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-[18px] py-3.5 text-left shadow-[0_4px_14px_-10px_rgba(120,90,60,0.4)]"
+            className="mb-6 flex w-full items-center gap-3.5 rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-3.5 py-3.5 text-left shadow-[0_4px_14px_-10px_rgba(120,90,60,0.4)] md:px-[18px]"
           >
             <span className="font-display flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-base font-semibold text-white">
               C
@@ -217,12 +217,12 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-[22px] py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)]">
+            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-4 py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)] md:px-[22px]">
               <header className="mb-3.5 flex items-center gap-3">
                 <div className="font-display flex size-11 shrink-0 items-center justify-center rounded-full bg-[#A9D9E8] text-[17px] font-semibold text-[#1F7A93]">
                   M
                 </div>
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <div className="font-display text-[16.5px] font-semibold text-[#3F362E]">
                     Mateo
                   </div>
@@ -230,7 +230,7 @@ export default function Home() {
                     14:20 · publicado por vos
                   </div>
                 </div>
-                <div className="flex items-center gap-[7px] rounded-full bg-[#CFEBD8] px-3 py-1.5">
+                <div className="flex shrink-0 items-center gap-[7px] rounded-full bg-[#CFEBD8] px-3 py-1.5">
                   <span className="size-2 rounded-full bg-[#3E9B6C]" />
                   <span className="text-xs font-extrabold tracking-[0.5px] text-[#3E9B6C]">
                     LOGRO
@@ -293,12 +293,12 @@ export default function Home() {
               </footer>
             </article>
 
-            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-[22px] py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)]">
+            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-4 py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)] md:px-[22px]">
               <header className="mb-3.5 flex items-center gap-3">
                 <div className="font-display flex size-11 shrink-0 items-center justify-center rounded-full bg-[#A9D9E8] text-[17px] font-semibold text-[#1F7A93]">
                   M
                 </div>
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <div className="font-display text-[16.5px] font-semibold text-[#3F362E]">
                     Mateo
                   </div>
@@ -306,7 +306,7 @@ export default function Home() {
                     09:40 · publicado por vos
                   </div>
                 </div>
-                <div className="flex items-center gap-[7px] rounded-full bg-[#C7E7F1] px-3 py-1.5">
+                <div className="flex shrink-0 items-center gap-[7px] rounded-full bg-[#C7E7F1] px-3 py-1.5">
                   <span className="size-2 rounded-full bg-[#2E89A6]" />
                   <span className="text-xs font-extrabold tracking-[0.5px] text-[#2E89A6]">
                     ACTIVIDAD
@@ -393,7 +393,7 @@ export default function Home() {
               </footer>
             </article>
 
-            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-[22px] py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)]">
+            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-4 py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)] md:px-[22px]">
               <header className="mb-3.5 flex items-center gap-3">
                 <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#CCD8F4] text-[#4E72C8]">
                   <svg
@@ -410,7 +410,7 @@ export default function Home() {
                     <path d="m3 11 18-5v12L3 14v-3zM11.6 16.8a3 3 0 1 1-5.8-1.6" />
                   </svg>
                 </div>
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <div className="font-display text-[16.5px] font-semibold text-[#3F362E]">
                     Anuncio general
                   </div>
@@ -418,7 +418,7 @@ export default function Home() {
                     07:50 · publicado por vos
                   </div>
                 </div>
-                <div className="flex items-center gap-[7px] rounded-full bg-[#CCD8F4] px-3 py-1.5">
+                <div className="flex shrink-0 items-center gap-[7px] rounded-full bg-[#CCD8F4] px-3 py-1.5">
                   <span className="size-2 rounded-full bg-[#4E72C8]" />
                   <span className="text-xs font-extrabold tracking-[0.5px] text-[#4E72C8]">
                     ANUNCIO
