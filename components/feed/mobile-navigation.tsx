@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   SidebarContent,
@@ -8,6 +8,10 @@ import {
 } from "@/components/feed/sidebar";
 
 export type MobileNavigationProps = SidebarProps;
+
+const drawerId = "mobile-navigation-drawer";
+const focusableSelector =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 function MobileBrand() {
   return (
@@ -37,14 +41,81 @@ function MobileBrand() {
 
 export function MobileNavigation(props: MobileNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
+  const wasOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      if (wasOpenRef.current) {
+        menuButtonRef.current?.focus();
+        wasOpenRef.current = false;
+      }
+
+      return;
+    }
+
+    wasOpenRef.current = true;
+    closeButtonRef.current?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const drawer = drawerRef.current;
+
+      if (!drawer) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        drawer.querySelectorAll<HTMLElement>(focusableSelector),
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+
+      if (!firstElement || !lastElement) {
+        event.preventDefault();
+        drawer.focus();
+        return;
+      }
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      } else if (!drawer.contains(document.activeElement)) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   return (
     <>
       <div className="sticky top-0 z-40 flex items-center justify-between border-b border-[#ECE0D0] bg-[#FFFDF9] px-4 py-3 md:hidden">
         <MobileBrand />
         <button
+          ref={menuButtonRef}
           type="button"
           aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isOpen}
+          aria-controls={drawerId}
+          aria-haspopup="dialog"
           onClick={() => setIsOpen((open) => !open)}
           className="flex size-10 items-center justify-center rounded-xl bg-[#F6ECDF] text-[#6E6359]"
         >
@@ -68,11 +139,44 @@ export function MobileNavigation(props: MobileNavigationProps) {
           <button
             type="button"
             aria-label="Cerrar menú"
+            tabIndex={-1}
             onClick={() => setIsOpen(false)}
             className="fixed inset-0 z-30 bg-[#3F362E]/35 md:hidden"
           />
-          <aside className="fixed inset-y-0 left-0 z-50 flex h-screen w-[248px] flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:hidden">
-            <SidebarContent {...props} />
+          <aside
+            ref={drawerRef}
+            id={drawerId}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navegación principal móvil"
+            tabIndex={-1}
+            className="fixed inset-y-0 left-0 z-50 flex h-screen w-[248px] flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:hidden"
+          >
+            <SidebarContent
+              {...props}
+              headerAction={
+                <button
+                  ref={closeButtonRef}
+                  type="button"
+                  aria-label="Cerrar menú"
+                  onClick={() => setIsOpen(false)}
+                  className="flex size-9 items-center justify-center rounded-[10px] bg-[#F6ECDF] text-[#6E6359]"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                  >
+                    <path d="m6 6 12 12M18 6 6 18" />
+                  </svg>
+                </button>
+              }
+            />
           </aside>
         </>
       ) : null}
