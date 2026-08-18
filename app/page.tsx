@@ -1,5 +1,6 @@
 import { ComposerPrompt } from "@/components/feed/composer-prompt";
 import { FeedHeader } from "@/components/feed/feed-header";
+import { MobileNavigation } from "@/components/feed/mobile-navigation";
 import { PostCard, type FeedPost } from "@/components/feed/post-card";
 import { SectionDivider } from "@/components/feed/section-divider";
 import { Sidebar } from "@/components/feed/sidebar";
@@ -55,6 +56,14 @@ export default function Home() {
       />
 
       <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
+        <MobileNavigation
+          roomName="Sala Soles"
+          userName="Caro Giménez"
+          userRole="Maestra · Soles"
+          userInitial="C"
+          activeItem="feed"
+        />
+
         <div className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20">
           <FeedHeader
             daycareName="GUARDERÍA"
