@@ -3,7 +3,15 @@ import { FeedHeader } from "@/components/feed/feed-header";
 import { MobileNavigation } from "@/components/feed/mobile-navigation";
 import { PostCard, type FeedPost } from "@/components/feed/post-card";
 import { SectionDivider } from "@/components/feed/section-divider";
-import { Sidebar } from "@/components/feed/sidebar";
+import { Sidebar, type SidebarProps } from "@/components/feed/sidebar";
+
+const sidebarProps = {
+  roomName: "Sala Soles",
+  userName: "Caro Giménez",
+  userRole: "Maestra · Soles",
+  userInitial: "C",
+  activeItem: "feed",
+} satisfies SidebarProps;
 
 const posts: FeedPost[] = [
   {
@@ -47,22 +55,10 @@ const posts: FeedPost[] = [
 export default function Home() {
   return (
     <div className="flex min-h-screen bg-[#F6ECDF]">
-      <Sidebar
-        roomName="Sala Soles"
-        userName="Caro Giménez"
-        userRole="Maestra · Soles"
-        userInitial="C"
-        activeItem="feed"
-      />
+      <Sidebar {...sidebarProps} />
 
       <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
-        <MobileNavigation
-          roomName="Sala Soles"
-          userName="Caro Giménez"
-          userRole="Maestra · Soles"
-          userInitial="C"
-          activeItem="feed"
-        />
+        <MobileNavigation {...sidebarProps} />
 
         <div
           data-feed-content
