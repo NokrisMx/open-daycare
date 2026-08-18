@@ -1,4 +1,6 @@
+import { ComposerPrompt } from "@/components/feed/composer-prompt";
 import { FeedHeader } from "@/components/feed/feed-header";
+import { SectionDivider } from "@/components/feed/section-divider";
 import { Sidebar } from "@/components/feed/sidebar";
 
 export default function Home() {
@@ -21,40 +23,12 @@ export default function Home() {
             summary="12 niños · martes 17 jun"
           />
 
-          <button
-            type="button"
-            className="mb-6 flex w-full items-center gap-3.5 rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-3.5 py-3.5 text-left shadow-[0_4px_14px_-10px_rgba(120,90,60,0.4)] md:px-[18px]"
-          >
-            <span className="font-display flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-[16px] font-semibold text-white">
-              C
-            </span>
-            <span className="flex-1 text-[15px] text-[#A89A8B]">
-              Compartí un momento…
-            </span>
-            <span className="flex size-[38px] shrink-0 items-center justify-center rounded-xl bg-[#FBE3D8] text-[#E0654A]">
-              <svg
-                aria-hidden="true"
-                width="19"
-                height="19"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-                <circle cx="12" cy="13" r="4" />
-              </svg>
-            </span>
-          </button>
+          <ComposerPrompt
+            authorInitial="C"
+            placeholder="Compartí un momento…"
+          />
 
-          <div className="mb-3.5 flex items-center gap-3.5">
-            <span className="text-[12.5px] font-extrabold tracking-[0.8px] text-[#8A7C6D]">
-              PUBLICADO HOY
-            </span>
-            <span className="h-px flex-1 bg-[#E7DAC8]" />
-          </div>
+          <SectionDivider label="PUBLICADO HOY" />
 
           <div className="flex flex-col gap-4">
             <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-4 py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)] md:px-[22px]">
