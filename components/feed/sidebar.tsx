@@ -1,11 +1,15 @@
-type SidebarItem = "feed" | "children" | "notices" | "account";
+export type SidebarItem = "feed" | "children" | "notices" | "account";
 
-type SidebarProps = {
+export type SidebarProps = {
   roomName: string;
   userName: string;
   userRole: string;
   userInitial: string;
   activeItem: SidebarItem;
+};
+
+type SidebarContentProps = SidebarProps & {
+  headerAction?: React.ReactNode;
 };
 
 const navigationItems: Array<{
@@ -52,15 +56,16 @@ const navigationItems: Array<{
   },
 ];
 
-export function Sidebar({
+export function SidebarContent({
   roomName,
   userName,
   userRole,
   userInitial,
   activeItem,
-}: SidebarProps) {
+  headerAction,
+}: SidebarContentProps) {
   return (
-    <aside className="sticky top-0 hidden h-screen w-[248px] shrink-0 flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:flex">
+    <>
       <div className="flex items-center gap-[11px] px-2 pt-1 pb-[22px]">
         <div className="flex size-[38px] shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(155deg,#F8C3A8,#F2937A)]">
           <svg
@@ -86,6 +91,9 @@ export function Sidebar({
             {roomName}
           </div>
         </div>
+        {headerAction ? (
+          <div className="ml-auto shrink-0">{headerAction}</div>
+        ) : null}
       </div>
 
       <button
@@ -175,6 +183,14 @@ export function Sidebar({
           </button>
         </div>
       </div>
+    </>
+  );
+}
+
+export function Sidebar(props: SidebarProps) {
+  return (
+    <aside className="sticky top-0 hidden h-screen w-[248px] shrink-0 flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:flex">
+      <SidebarContent {...props} />
     </aside>
   );
 }
