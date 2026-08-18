@@ -1,6 +1,6 @@
 # SPEC 02 — Componentes reutilizables del feed
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-08-18
 > **Objetivo:** Refactorizar la ruta `/` para componer el feed existente con componentes de dominio reutilizables y datos estáticos tipados, sin alterar su apariencia ni comportamiento.
@@ -116,23 +116,23 @@ El array `FeedPost[]` permanecerá en `app/page.tsx`. No se introduce persistenc
 
 ## Criterios de aceptación
 
-- [ ] `app/page.tsx` compone la pantalla mediante `Sidebar`, `FeedHeader`, `ComposerPrompt`, `SectionDivider` y `PostCard` importados desde `components/feed/`.
-- [ ] Las tres publicaciones se definen una sola vez en un array `FeedPost[]` dentro de `app/page.tsx` y se renderizan con un único `PostCard` mediante `map`.
-- [ ] La unión discriminada diferencia `achievement`, `activity` y `announcement`, y la fotografía placeholder solo es obligatoria para `activity`.
-- [ ] Todos los valores contextuales definidos en el modelo se entregan mediante props y no quedan duplicados dentro de los componentes.
-- [ ] `Sidebar` recibe usuario, sala y elemento activo, mientras conserva internamente los cuatro ítems visuales y sus SVG.
-- [ ] Ningún archivo nuevo contiene `use client`, hooks, estado, efectos o callbacks de interacción.
-- [ ] Los iconos de reacción y comentario aparecen una sola vez en la implementación de `PostCard`; los demás SVG permanecen encapsulados en su región.
-- [ ] La ruta `/` conserva literalmente los nombres, fechas, textos, etiquetas, destinatarios y contadores aprobados en SPEC 01.
-- [ ] En escritorio, la composición coincide con `references/screenshots/feed.png` en estructura, tipografías, colores, bordes, sombras, radios y espaciados; solo se admiten diferencias de rasterizado y antialiasing.
-- [ ] A 390 px de ancho el sidebar no se muestra, el feed ocupa el ancho disponible y no existe desbordamiento horizontal.
-- [ ] El sidebar sigue fijo y el área principal sigue desplazándose de forma independiente en escritorio.
-- [ ] Ningún control cambia la URL, modifica contenido, abre otra pantalla o realiza solicitudes de red.
-- [ ] `app/layout.tsx` y `app/globals.css` permanecen sin cambios.
-- [ ] No se incorporan componentes genéricos, dependencias, assets, configuración adicional ni infraestructura de pruebas.
-- [ ] La consola del navegador no muestra errores al cargar `/`.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] `app/page.tsx` compone la pantalla mediante `Sidebar`, `FeedHeader`, `ComposerPrompt`, `SectionDivider` y `PostCard` importados desde `components/feed/`.
+- [x] Las tres publicaciones se definen una sola vez en un array `FeedPost[]` dentro de `app/page.tsx` y se renderizan con un único `PostCard` mediante `map`.
+- [x] La unión discriminada diferencia `achievement`, `activity` y `announcement`, y la fotografía placeholder solo es obligatoria para `activity`.
+- [x] Todos los valores contextuales definidos en el modelo se entregan mediante props y no quedan duplicados dentro de los componentes.
+- [x] `Sidebar` recibe usuario, sala y elemento activo, mientras conserva internamente los cuatro ítems visuales y sus SVG.
+- [x] Ningún archivo nuevo contiene `use client`, hooks, estado, efectos o callbacks de interacción.
+- [x] Los iconos de reacción y comentario aparecen una sola vez en la implementación de `PostCard`; los demás SVG permanecen encapsulados en su región.
+- [x] La ruta `/` conserva literalmente los nombres, fechas, textos, etiquetas, destinatarios y contadores aprobados en SPEC 01.
+- [x] En escritorio, la composición coincide con `references/screenshots/feed.png` en estructura, tipografías, colores, bordes, sombras, radios y espaciados; solo se admiten diferencias de rasterizado y antialiasing.
+- [x] A 390 px de ancho el sidebar no se muestra, el feed ocupa el ancho disponible y no existe desbordamiento horizontal.
+- [x] El sidebar sigue fijo y el área principal sigue desplazándose de forma independiente en escritorio.
+- [x] Ningún control cambia la URL, modifica contenido, abre otra pantalla o realiza solicitudes de red.
+- [x] `app/layout.tsx` y `app/globals.css` permanecen sin cambios.
+- [x] No se incorporan componentes genéricos, dependencias, assets, configuración adicional ni infraestructura de pruebas.
+- [x] La consola del navegador no muestra errores al cargar `/`.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
