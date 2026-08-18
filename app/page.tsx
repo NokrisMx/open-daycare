@@ -215,6 +215,84 @@ export default function Home() {
             </span>
             <span className="h-px flex-1 bg-[#E7DAC8]" />
           </div>
+
+          <div className="flex flex-col gap-4">
+            <article className="rounded-[20px] border border-[#ECE0D0] bg-[#FFFDF9] px-[22px] py-5 shadow-[0_4px_16px_-12px_rgba(120,90,60,0.5)]">
+              <header className="mb-3.5 flex items-center gap-3">
+                <div className="font-display flex size-11 shrink-0 items-center justify-center rounded-full bg-[#A9D9E8] text-[17px] font-semibold text-[#1F7A93]">
+                  M
+                </div>
+                <div className="flex-1">
+                  <div className="font-display text-[16.5px] font-semibold text-[#3F362E]">
+                    Mateo
+                  </div>
+                  <div className="text-[12.5px] text-[#A89A8B]">
+                    14:20 · publicado por vos
+                  </div>
+                </div>
+                <div className="flex items-center gap-[7px] rounded-full bg-[#CFEBD8] px-3 py-1.5">
+                  <span className="size-2 rounded-full bg-[#3E9B6C]" />
+                  <span className="text-xs font-extrabold tracking-[0.5px] text-[#3E9B6C]">
+                    LOGRO
+                  </span>
+                </div>
+              </header>
+
+              <div className="mb-2.5 text-[12.5px] text-[#A89A8B]">
+                Para: familia de Mateo
+              </div>
+              <p className="text-[15.5px] leading-[1.55] text-[#4A4038]">
+                ¡Usó el orinal solito por primera vez! Estaba feliz de
+                contárselo a todos. Un gran paso.
+              </p>
+
+              <footer className="mt-4 flex items-center gap-[18px] border-t border-[#F0E6D8] pt-3.5">
+                <span className="flex items-center gap-[7px] text-sm font-bold text-[#E0654A]">
+                  <svg
+                    aria-hidden="true"
+                    width="19"
+                    height="19"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z" />
+                  </svg>
+                  3
+                </span>
+                <button
+                  type="button"
+                  aria-label="1 comentario"
+                  className="flex items-center gap-[7px] text-sm font-bold text-[#94887B]"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
+                  </svg>
+                  1
+                </button>
+                <span className="flex-1" />
+                <button
+                  type="button"
+                  className="text-sm font-extrabold text-[#C5503A]"
+                >
+                  Editar
+                </button>
+              </footer>
+            </article>
+          </div>
         </div>
       </main>
     </div>
