@@ -47,6 +47,21 @@ export function MobileNavigation(props: MobileNavigationProps) {
   const wasOpenRef = useRef(false);
 
   useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+
+    function handleBreakpointChange(event: MediaQueryListEvent) {
+      if (event.matches) {
+        setIsOpen(false);
+      }
+    }
+
+    desktopQuery.addEventListener("change", handleBreakpointChange);
+
+    return () =>
+      desktopQuery.removeEventListener("change", handleBreakpointChange);
+  }, []);
+
+  useEffect(() => {
     if (!isOpen) {
       if (wasOpenRef.current) {
         menuButtonRef.current?.focus();
@@ -58,6 +73,23 @@ export function MobileNavigation(props: MobileNavigationProps) {
 
     wasOpenRef.current = true;
     closeButtonRef.current?.focus();
+
+    const mainElement = menuButtonRef.current?.closest("main");
+    const feedContent = mainElement?.querySelector<HTMLElement>(
+      "[data-feed-content]",
+    );
+    const previousOverflowY = mainElement?.style.overflowY;
+    const wasFeedInert = feedContent?.inert ?? false;
+    const previousAriaHidden = feedContent?.getAttribute("aria-hidden");
+
+    if (mainElement) {
+      mainElement.style.overflowY = "hidden";
+    }
+
+    if (feedContent) {
+      feedContent.inert = true;
+      feedContent.setAttribute("aria-hidden", "true");
+    }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -102,7 +134,23 @@ export function MobileNavigation(props: MobileNavigationProps) {
 
     document.addEventListener("keydown", handleKeyDown);
 
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+
+      if (mainElement) {
+        mainElement.style.overflowY = previousOverflowY ?? "";
+      }
+
+      if (feedContent) {
+        feedContent.inert = wasFeedInert;
+
+        if (previousAriaHidden === null) {
+          feedContent.removeAttribute("aria-hidden");
+        } else {
+          feedContent.setAttribute("aria-hidden", previousAriaHidden);
+        }
+      }
+    };
   }, [isOpen]);
 
   return (
@@ -150,7 +198,7 @@ export function MobileNavigation(props: MobileNavigationProps) {
             aria-modal="true"
             aria-label="Navegación principal móvil"
             tabIndex={-1}
-            className="fixed inset-y-0 left-0 z-50 flex h-screen w-[248px] flex-col border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:hidden"
+            className="fixed inset-y-0 left-0 z-50 flex h-dvh w-[248px] flex-col overflow-y-auto overscroll-contain border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:hidden"
           >
             <SidebarContent
               {...props}

@@ -64,7 +64,10 @@ export default function Home() {
           activeItem="feed"
         />
 
-        <div className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20">
+        <div
+          data-feed-content
+          className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20"
+        >
           <FeedHeader
             daycareName="GUARDERÍA"
             roomName="SALA SOLES"
