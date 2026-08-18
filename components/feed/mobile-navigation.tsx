@@ -182,52 +182,56 @@ export function MobileNavigation(props: MobileNavigationProps) {
         </button>
       </div>
 
-      {isOpen ? (
-        <>
-          <button
-            type="button"
-            aria-label="Cerrar menú"
-            tabIndex={-1}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-30 bg-[#3F362E]/35 md:hidden"
-          />
-          <aside
-            ref={drawerRef}
-            id={drawerId}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navegación principal móvil"
-            tabIndex={-1}
-            className="fixed inset-y-0 left-0 z-50 flex h-dvh w-[248px] flex-col overflow-y-auto overscroll-contain border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 md:hidden"
-          >
-            <SidebarContent
-              {...props}
-              headerAction={
-                <button
-                  ref={closeButtonRef}
-                  type="button"
-                  aria-label="Cerrar menú"
-                  onClick={() => setIsOpen(false)}
-                  className="flex size-9 items-center justify-center rounded-[10px] bg-[#F6ECDF] text-[#6E6359]"
-                >
-                  <svg
-                    aria-hidden="true"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                  >
-                    <path d="m6 6 12 12M18 6 6 18" />
-                  </svg>
-                </button>
-              }
-            />
-          </aside>
-        </>
-      ) : null}
+      <button
+        type="button"
+        aria-label="Cerrar menú"
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+        tabIndex={-1}
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 z-30 bg-[#3F362E]/35 transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden ${
+          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+      <aside
+        ref={drawerRef}
+        id={drawerId}
+        role={isOpen ? "dialog" : undefined}
+        aria-modal={isOpen ? "true" : undefined}
+        aria-hidden={isOpen ? undefined : "true"}
+        aria-label={isOpen ? "Navegación principal móvil" : undefined}
+        inert={!isOpen}
+        tabIndex={-1}
+        className={`fixed inset-y-0 left-0 z-50 flex h-dvh w-[248px] flex-col overflow-y-auto overscroll-contain border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <SidebarContent
+          {...props}
+          headerAction={
+            <button
+              ref={closeButtonRef}
+              type="button"
+              aria-label="Cerrar menú"
+              onClick={() => setIsOpen(false)}
+              className="flex size-9 items-center justify-center rounded-[10px] bg-[#F6ECDF] text-[#6E6359]"
+            >
+              <svg
+                aria-hidden="true"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+              >
+                <path d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+          }
+        />
+      </aside>
     </>
   );
 }
