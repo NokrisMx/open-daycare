@@ -1,3 +1,4 @@
+import { FeedHeader } from "@/components/feed/feed-header";
 import { Sidebar } from "@/components/feed/sidebar";
 
 export default function Home() {
@@ -13,17 +14,12 @@ export default function Home() {
 
       <main className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
         <div className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20">
-          <header className="mb-6">
-            <div className="mb-1 text-[12.5px] font-extrabold tracking-[0.8px] text-[#D9583C]">
-              GUARDERÍA · SALA SOLES
-            </div>
-            <h1 className="font-display text-[30px] font-semibold text-[#3F362E]">
-              Buenas, Caro
-            </h1>
-            <p className="mt-[5px] text-[14.5px] text-[#94887B]">
-              12 niños · martes 17 jun
-            </p>
-          </header>
+          <FeedHeader
+            daycareName="GUARDERÍA"
+            roomName="SALA SOLES"
+            greeting="Buenas, Caro"
+            summary="12 niños · martes 17 jun"
+          />
 
           <button
             type="button"
