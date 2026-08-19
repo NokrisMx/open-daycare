@@ -9,6 +9,14 @@ export type KidsListProps = {
   kids: readonly KidSummary[];
 };
 
+function normalizeText(value: string) {
+  return value
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 export function KidsList({ roomName, kids }: KidsListProps) {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
@@ -24,6 +32,11 @@ export function KidsList({ roomName, kids }: KidsListProps) {
 
     return () => window.clearTimeout(timeoutId);
   }, [query]);
+
+  const normalizedQuery = normalizeText(debouncedQuery);
+  const visibleKids = normalizedQuery
+    ? kids.filter((kid) => normalizeText(kid.name).includes(normalizedQuery))
+    : kids;
 
   return (
     <section>
