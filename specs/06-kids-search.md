@@ -65,37 +65,37 @@ La normalización será privada al mismo archivo. Recibirá un texto, eliminará
 
 ## Criterios de aceptación
 
-- [ ] El único archivo de aplicación modificado es `components/kids/kids-list.tsx`.
-- [ ] Al entrar en `/kids` con la consulta vacía se muestran las ocho tarjetas en el orden definido por `app/kids/data.ts` y el contador indica `8 niños`.
-- [ ] El input conserva el placeholder `Buscar niño…`, la etiqueta accesible `Buscar niño` y permite editar su valor normalmente.
-- [ ] La búsqueda compara únicamente el campo `kid.name` de cada elemento.
-- [ ] Escribir `sofia` muestra únicamente la tarjeta de Sofía Méndez después de 300 ms.
-- [ ] Escribir `mendez` encuentra a Sofía Méndez aunque el dato contenga la tilde en `Méndez`.
-- [ ] Escribir `FER` encuentra a Mateo Fernández sin distinguir mayúsculas de minúsculas.
-- [ ] Una consulta parcial coincide en cualquier posición del nombre completo normalizado.
-- [ ] Los espacios al inicio y al final de una consulta no cambian sus coincidencias.
-- [ ] Durante los 300 ms posteriores a una consulta no vacía permanecen visibles los resultados y el contador de la consulta aplicada anteriormente.
-- [ ] Cuando el texto cambia varias veces antes de 300 ms, solo se aplica la última consulta y ningún temporizador anterior reemplaza posteriormente sus resultados.
-- [ ] Borrar todo el contenido restaura inmediatamente las ocho tarjetas sin esperar 300 ms.
-- [ ] Introducir únicamente espacios se trata como una consulta vacía y restaura inmediatamente las ocho tarjetas.
-- [ ] Cuando una consulta devuelve una sola coincidencia, el contador muestra `1 niño`.
-- [ ] Cuando una consulta no devuelve coincidencias, el contador muestra `0 niños`.
-- [ ] Cuando existen dos o más coincidencias, el contador muestra `N niños` con la cantidad visible exacta.
-- [ ] Cada actualización aplicada del contador se anuncia mediante una región `aria-live="polite"` y `aria-atomic="true"`.
-- [ ] Una consulta sin coincidencias reemplaza la cuadrícula por un panel de ancho completo con `No se encontraron niños.` y `Prueba con otro nombre.`.
-- [ ] El estado sin resultados no incluye la consulta escrita ni un botón para limpiar el campo.
-- [ ] Las coincidencias conservan el mismo orden relativo que tienen en la prop `kids`.
-- [ ] Las tarjetas visibles conservan literalmente sus nombres, edades, padres, badges, estilos y enlaces aprobados en SPEC 05.
-- [ ] Pulsar una tarjeta después de filtrar navega al perfil numérico correcto.
-- [ ] Recargar `/kids` o salir y volver a montar la ruta reinicia la consulta y muestra la colección completa.
-- [ ] La búsqueda no añade parámetros a la URL, no accede al almacenamiento del navegador y no realiza solicitudes de red.
-- [ ] `app/kids/data.ts`, `app/kids/page.tsx`, `components/kids/kid-card.tsx` y las rutas de perfil permanecen sin cambios.
-- [ ] A 390 y 767 px la búsqueda, el contador, una tarjeta única y el panel vacío ocupan el ancho disponible sin producir desbordamiento horizontal.
-- [ ] A 768 y 1200 px la composición conserva el breakpoint, las dimensiones y la cuadrícula de dos columnas aprobados en SPEC 05 cuando existen varias coincidencias.
-- [ ] La consola del navegador no muestra errores al escribir, borrar, cambiar rápidamente la consulta o navegar desde un resultado.
-- [ ] No se incorporan dependencias, utilidades compartidas, hooks extraídos ni infraestructura de pruebas automatizadas.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] El único archivo de aplicación modificado es `components/kids/kids-list.tsx`.
+- [x] Al entrar en `/kids` con la consulta vacía se muestran las ocho tarjetas en el orden definido por `app/kids/data.ts` y el contador indica `8 niños`.
+- [x] El input conserva el placeholder `Buscar niño…`, la etiqueta accesible `Buscar niño` y permite editar su valor normalmente.
+- [x] La búsqueda compara únicamente el campo `kid.name` de cada elemento.
+- [x] Escribir `sofia` muestra únicamente la tarjeta de Sofía Méndez después de 300 ms.
+- [x] Escribir `mendez` encuentra a Sofía Méndez aunque el dato contenga la tilde en `Méndez`.
+- [x] Escribir `FER` encuentra a Mateo Fernández sin distinguir mayúsculas de minúsculas.
+- [x] Una consulta parcial coincide en cualquier posición del nombre completo normalizado.
+- [x] Los espacios al inicio y al final de una consulta no cambian sus coincidencias.
+- [x] Durante los 300 ms posteriores a una consulta no vacía permanecen visibles los resultados y el contador de la consulta aplicada anteriormente.
+- [x] Cuando el texto cambia varias veces antes de 300 ms, solo se aplica la última consulta y ningún temporizador anterior reemplaza posteriormente sus resultados.
+- [x] Borrar todo el contenido restaura inmediatamente las ocho tarjetas sin esperar 300 ms.
+- [x] Introducir únicamente espacios se trata como una consulta vacía y restaura inmediatamente las ocho tarjetas.
+- [x] Cuando una consulta devuelve una sola coincidencia, el contador muestra `1 niño`.
+- [x] Cuando una consulta no devuelve coincidencias, el contador muestra `0 niños`.
+- [x] Cuando existen dos o más coincidencias, el contador muestra `N niños` con la cantidad visible exacta.
+- [x] Cada actualización aplicada del contador se anuncia mediante una región `aria-live="polite"` y `aria-atomic="true"`.
+- [x] Una consulta sin coincidencias reemplaza la cuadrícula por un panel de ancho completo con `No se encontraron niños.` y `Prueba con otro nombre.`.
+- [x] El estado sin resultados no incluye la consulta escrita ni un botón para limpiar el campo.
+- [x] Las coincidencias conservan el mismo orden relativo que tienen en la prop `kids`.
+- [x] Las tarjetas visibles conservan literalmente sus nombres, edades, padres, badges, estilos y enlaces aprobados en SPEC 05.
+- [x] Pulsar una tarjeta después de filtrar navega al perfil numérico correcto.
+- [x] Recargar `/kids` o salir y volver a montar la ruta reinicia la consulta y muestra la colección completa.
+- [x] La búsqueda no añade parámetros a la URL, no accede al almacenamiento del navegador y no realiza solicitudes de red.
+- [x] `app/kids/data.ts`, `app/kids/page.tsx`, `components/kids/kid-card.tsx` y las rutas de perfil permanecen sin cambios.
+- [x] A 390 y 767 px la búsqueda, el contador, una tarjeta única y el panel vacío ocupan el ancho disponible sin producir desbordamiento horizontal.
+- [x] A 768 y 1200 px la composición conserva el breakpoint, las dimensiones y la cuadrícula de dos columnas aprobados en SPEC 05 cuando existen varias coincidencias.
+- [x] La consola del navegador no muestra errores al escribir, borrar, cambiar rápidamente la consulta o navegar desde un resultado.
+- [x] No se incorporan dependencias, utilidades compartidas, hooks extraídos ni infraestructura de pruebas automatizadas.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
