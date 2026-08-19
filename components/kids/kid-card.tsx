@@ -46,7 +46,7 @@ export function KidCard({ kid }: KidCardProps) {
         {kid.initial}
       </div>
 
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 break-words md:break-normal">
         <div className="font-display text-base font-semibold text-[#3F362E]">
           {kid.name}
         </div>

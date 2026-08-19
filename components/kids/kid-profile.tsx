@@ -72,9 +72,9 @@ export function KidProfile({ profile }: KidProfileProps) {
         Volver a Niños
       </Link>
 
-      <div className="flex flex-wrap items-start gap-[26px]">
-        <div className="flex min-w-[300px] flex-1 flex-col gap-[18px]">
-          <div className="flex items-center gap-[18px]">
+      <div className="flex flex-col items-stretch gap-[26px] md:flex-row md:flex-wrap md:items-start">
+        <div className="flex min-w-0 flex-1 flex-col gap-[18px] md:min-w-[300px]">
+          <div className="flex flex-wrap items-center gap-[18px] md:flex-nowrap">
             <div
               className={`font-display flex size-[84px] shrink-0 items-center justify-center rounded-full text-[34px] font-semibold ${kidAvatarToneClasses[profile.avatarTone]}`}
             >
@@ -90,7 +90,7 @@ export function KidProfile({ profile }: KidProfileProps) {
             </div>
             <button
               type="button"
-              className="rounded-xl border-[1.5px] border-[#ECE0D0] bg-[#FFFDF9] px-4 py-[9px] text-sm font-bold text-[#6E6359]"
+              className="w-full basis-full rounded-xl border-[1.5px] border-[#ECE0D0] bg-[#FFFDF9] px-4 py-[9px] text-sm font-bold text-[#6E6359] md:w-auto md:basis-auto"
             >
               Editar
             </button>
@@ -145,7 +145,7 @@ export function KidProfile({ profile }: KidProfileProps) {
           </div>
         </div>
 
-        <div className="flex w-[300px] shrink-0 flex-col gap-3.5">
+        <div className="flex w-full shrink-0 flex-col gap-3.5 md:w-[300px]">
           <button
             type="button"
             className="flex w-full items-center justify-center gap-[9px] rounded-[14px] bg-[#3F362E] p-[13px] text-[15px] font-extrabold text-white"

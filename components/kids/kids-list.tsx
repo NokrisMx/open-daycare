@@ -8,7 +8,7 @@ export type KidsListProps = {
 export function KidsList({ roomName, kids }: KidsListProps) {
   return (
     <section>
-      <header className="mb-[22px] flex items-end justify-between gap-4">
+      <header className="mb-[22px] flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-4">
         <div>
           <div className="mb-1 text-[12.5px] font-extrabold tracking-[0.8px] text-[#D9583C]">
             GESTIÓN
@@ -71,7 +71,7 @@ export function KidsList({ roomName, kids }: KidsListProps) {
         <span aria-hidden="true" className="h-px flex-1 bg-[#E7DAC8]" />
       </div>
 
-      <div className="grid grid-cols-2 gap-3.5">
+      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         {kids.map((kid) => (
           <KidCard key={kid.id} kid={kid} />
         ))}
