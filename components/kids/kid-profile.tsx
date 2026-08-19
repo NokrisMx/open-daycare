@@ -54,7 +54,7 @@ export function KidProfile({ profile }: KidProfileProps) {
     <div className="mx-auto max-w-[740px]">
       <Link
         href="/kids"
-        className="mb-5 flex items-center gap-[7px] text-sm font-bold text-[#94887B]"
+        className="mb-5 flex items-center gap-[7px] text-sm leading-[normal] font-bold text-[#94887B]"
       >
         <svg
           aria-hidden="true"
@@ -90,7 +90,7 @@ export function KidProfile({ profile }: KidProfileProps) {
             </div>
             <button
               type="button"
-              className="w-full basis-full rounded-xl border-[1.5px] border-[#ECE0D0] bg-[#FFFDF9] px-4 py-[9px] text-sm font-bold text-[#6E6359] md:w-auto md:basis-auto"
+              className="w-full basis-full rounded-xl border-[1.5px] border-[#ECE0D0] bg-[#FFFDF9] px-4 py-[9px] text-sm leading-[normal] font-bold text-[#6E6359] md:w-auto md:basis-auto"
             >
               Editar
             </button>

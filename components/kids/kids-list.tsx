@@ -59,7 +59,7 @@ export function KidsList({ roomName, kids }: KidsListProps) {
           type="text"
           aria-label="Buscar niño"
           placeholder="Buscar niño…"
-          className="min-w-0 flex-1 border-0 bg-transparent p-0 text-[15px] text-[#3F362E] outline-none placeholder:text-[#B6A99B]"
+          className="min-w-0 flex-1 border-0 bg-transparent px-0.5 py-px text-[15px] text-[#3F362E] outline-none placeholder:text-[#B6A99B]"
         />
       </div>
 

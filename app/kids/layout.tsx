@@ -17,7 +17,7 @@ export default function KidsLayout({ children }: LayoutProps<"/kids">) {
 
       <main
         data-page-scroll-container
-        className="min-h-0 w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable] md:h-screen"
+        className="min-h-0 w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto md:h-screen"
       >
         <div
           data-page-content
