@@ -211,6 +211,7 @@ export function MobileNavigation(props: MobileNavigationProps) {
       >
         <SidebarContent
           {...props}
+          onNavigate={() => setIsOpen(false)}
           headerAction={
             <button
               ref={closeButtonRef}
