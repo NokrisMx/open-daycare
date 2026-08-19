@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import { KidCard, type KidSummary } from "@/components/kids/kid-card";
 
 export type KidsListProps = {
@@ -6,6 +10,8 @@ export type KidsListProps = {
 };
 
 export function KidsList({ roomName, kids }: KidsListProps) {
+  const [query, setQuery] = useState("");
+
   return (
     <section>
       <header className="mb-[22px] flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-4">
@@ -59,6 +65,8 @@ export function KidsList({ roomName, kids }: KidsListProps) {
           type="text"
           aria-label="Buscar niño"
           placeholder="Buscar niño…"
+          value={query}
+          onChange={(event) => setQuery(event.currentTarget.value)}
           className="min-w-0 flex-1 border-0 bg-transparent px-0.5 py-px text-[15px] text-[#3F362E] outline-none placeholder:text-[#B6A99B]"
         />
       </div>
