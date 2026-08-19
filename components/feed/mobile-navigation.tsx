@@ -74,17 +74,19 @@ export function MobileNavigation(props: MobileNavigationProps) {
     wasOpenRef.current = true;
     closeButtonRef.current?.focus();
 
-    const mainElement = menuButtonRef.current?.closest("main");
-    const feedContent = mainElement?.querySelector<HTMLElement>(
+    const scrollContainer = document.querySelector<HTMLElement>(
+      "[data-feed-scroll-container]",
+    );
+    const feedContent = scrollContainer?.querySelector<HTMLElement>(
       "[data-feed-content]",
     );
-    const previousOverflowY = mainElement?.style.overflowY;
+    const previousOverflowY = scrollContainer?.style.overflowY;
     const wasFeedInert = feedContent?.inert ?? false;
     const previousAriaHidden =
       feedContent?.getAttribute("aria-hidden") ?? null;
 
-    if (mainElement) {
-      mainElement.style.overflowY = "hidden";
+    if (scrollContainer) {
+      scrollContainer.style.overflowY = "hidden";
     }
 
     if (feedContent) {
@@ -138,8 +140,8 @@ export function MobileNavigation(props: MobileNavigationProps) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
 
-      if (mainElement) {
-        mainElement.style.overflowY = previousOverflowY ?? "";
+      if (scrollContainer) {
+        scrollContainer.style.overflowY = previousOverflowY ?? "";
       }
 
       if (feedContent) {
@@ -156,7 +158,7 @@ export function MobileNavigation(props: MobileNavigationProps) {
 
   return (
     <>
-      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-[#ECE0D0] bg-[#FFFDF9] px-4 py-3 md:hidden">
+      <div className="flex items-center justify-between border-b border-[#ECE0D0] bg-[#FFFDF9] pt-[calc(0.75rem+env(safe-area-inset-top))] pr-[calc(1rem+env(safe-area-inset-right))] pb-3 pl-[calc(1rem+env(safe-area-inset-left))] md:hidden">
         <MobileBrand />
         <button
           ref={menuButtonRef}
@@ -203,7 +205,7 @@ export function MobileNavigation(props: MobileNavigationProps) {
         aria-label={isOpen ? "Navegación principal móvil" : undefined}
         inert={!isOpen}
         tabIndex={-1}
-        className={`fixed inset-y-0 left-0 z-50 flex h-dvh w-[248px] flex-col overflow-y-auto overscroll-contain border-r border-[#ECE0D0] bg-[#FFFDF9] px-4 py-6 transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-dvh w-[calc(248px+env(safe-area-inset-left))] flex-col overflow-y-auto overscroll-contain border-r border-[#ECE0D0] bg-[#FFFDF9] pt-[calc(1.5rem+env(safe-area-inset-top))] pr-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pl-[calc(1rem+env(safe-area-inset-left))] transition-transform duration-200 ease-out motion-reduce:transition-none md:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
