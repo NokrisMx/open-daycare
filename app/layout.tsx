@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 
@@ -18,6 +18,10 @@ const fredoka = Fredoka({
 export const metadata: Metadata = {
   title: "OpenDayCare",
   description: "Novedades de la Sala Soles",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

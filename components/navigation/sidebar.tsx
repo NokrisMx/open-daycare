@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export type SidebarItem = "feed" | "children" | "notices" | "account";
 
 export type SidebarProps = {
@@ -10,16 +12,19 @@ export type SidebarProps = {
 
 type SidebarContentProps = SidebarProps & {
   headerAction?: React.ReactNode;
+  onNavigate?: () => void;
 };
 
 const navigationItems: Array<{
   id: SidebarItem;
   label: string;
   icon: React.ReactNode;
+  href?: "/" | "/kids";
 }> = [
   {
     id: "feed",
     label: "Feed",
+    href: "/",
     icon: (
       <path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
     ),
@@ -27,6 +32,7 @@ const navigationItems: Array<{
   {
     id: "children",
     label: "Niños",
+    href: "/kids",
     icon: (
       <>
         <circle cx="9" cy="7" r="3" />
@@ -63,6 +69,7 @@ export function SidebarContent({
   userInitial,
   activeItem,
   headerAction,
+  onNavigate,
 }: SidebarContentProps) {
   return (
     <>
@@ -119,18 +126,11 @@ export function SidebarContent({
       <nav aria-label="Navegación principal" className="flex flex-1 flex-col gap-1">
         {navigationItems.map((item) => {
           const isActive = item.id === activeItem;
-
-          return (
-            <button
-              key={item.id}
-              type="button"
-              aria-current={isActive ? "page" : undefined}
-              className={
-                isActive
-                  ? "flex items-center gap-3 rounded-xl bg-[#FBE3D8] px-3 py-[11px] text-left text-[14.5px] font-extrabold text-[#D9583C]"
-                  : "flex items-center gap-3 rounded-xl px-3 py-[11px] text-left text-[14.5px] font-semibold text-[#6E6359]"
-              }
-            >
+          const className = isActive
+            ? "flex items-center gap-3 rounded-xl bg-[#FBE3D8] px-3 py-[11px] text-left text-[14.5px] font-extrabold text-[#D9583C]"
+            : "flex items-center gap-3 rounded-xl px-3 py-[11px] text-left text-[14.5px] font-semibold text-[#6E6359]";
+          const content = (
+            <>
               <svg
                 aria-hidden="true"
                 width="19"
@@ -145,6 +145,31 @@ export function SidebarContent({
                 {item.icon}
               </svg>
               {item.label}
+            </>
+          );
+
+          if (item.href) {
+            return (
+              <Link
+                key={item.id}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={onNavigate}
+                className={className}
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          return (
+            <button
+              key={item.id}
+              type="button"
+              aria-current={isActive ? "page" : undefined}
+              className={className}
+            >
+              {content}
             </button>
           );
         })}
