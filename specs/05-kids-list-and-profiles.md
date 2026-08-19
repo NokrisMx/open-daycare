@@ -155,45 +155,45 @@ No se introduce persistencia ni una fuente de datos externa. El único estado nu
 
 ## Criterios de aceptación
 
-- [ ] `/kids` renderiza el listado y `/kids/1` a `/kids/8` renderizan respectivamente los perfiles de Mateo, Sofía, Benjamín, Valentina, Tomás, Emma, Lucas y Olivia.
-- [ ] `/kids/01`, `/kids/9`, `/kids/mateo-fernandez` y cualquier parámetro no canónico o desconocido muestran el 404 estándar sin renderizar datos de otro niño.
-- [ ] `app/kids/data.ts` contiene una sola colección con los ocho perfiles completos aprobados, sin API, fetch, persistencia ni duplicación entre datos de listado y perfil.
-- [ ] `components/kids/kid-card.tsx`, `components/kids/kids-list.tsx` y `components/kids/kid-profile.tsx` existen y reciben los datos mediante los contratos tipados definidos en esta spec.
-- [ ] Las ocho tarjetas se renderizan con un único `KidCard` y claves estables basadas en `id`.
-- [ ] El listado muestra literalmente los nombres, edades, cantidades de padres, iniciales y badges de `references/pantallas/ninos.dc.html`.
-- [ ] Las ocho tarjetas son enlaces accesibles y cada una navega al ID numérico que le corresponde entre `/kids/1` y `/kids/8`.
-- [ ] Todas las tarjetas conservan el borde, elevación y cambio de borde del hover mostrado en la referencia.
-- [ ] El input muestra `Buscar niño…`, acepta texto sin estado React y escribir no oculta, ordena ni modifica ninguna tarjeta.
-- [ ] Agregar niño se presenta como botón, pero no cambia la URL, no modifica contenido y no realiza solicitudes de red.
-- [ ] `/kids/1` muestra literalmente el nombre, edad, sala, fecha de nacimiento, ingreso, alerta, padres, relaciones y estados de `references/pantallas/perfil-nino.dc.html`.
-- [ ] `/kids/2` a `/kids/8` reutilizan la misma plantilla visual y muestran exactamente los nombres, fechas, ingresos, alertas y padres aprobados en la tabla de fixtures.
-- [ ] Solo Mateo y Tomás muestran el bloque `Alergias y notas`; los otros seis perfiles omiten por completo esa región y no muestran un estado neutral.
-- [ ] Mateo y Benjamín muestran dos filas de padres, Sofía, Tomás, Emma, Lucas y Olivia muestran una, y Valentina no muestra ninguna fila de padre.
-- [ ] Volver a Niños navega desde el perfil a `/kids`.
-- [ ] Editar, Resumen del día y Vincular otro padre se presentan como controles, pero no cambian la URL, no modifican contenido y no realizan solicitudes de red.
-- [ ] `app/kids/layout.tsx` compone una sola vez el sidebar, la navegación móvil, el contenedor de scroll y el wrapper de contenido para `/kids` y `/kids/[id]`.
-- [ ] El sidebar y el drawer se importan desde `components/navigation/`; no permanecen copias bajo `components/feed/` ni `components/kids/`.
-- [ ] Feed navega a `/`, Niños navega a `/kids` y el estado activo correcto se comunica visualmente y mediante `aria-current` en cada ruta.
-- [ ] En el drawer móvil, pulsar Feed o Niños cierra el panel incluso cuando el destino ya está activo.
-- [ ] Avisos, Mi cuenta, Nueva publicación y Cerrar sesión permanecen inertes en escritorio y móvil.
-- [ ] Abrir y cerrar el drawer conserva el bloqueo del scroll, el contenido inerte, Escape, overlay, contención de foco, restauración de foco y transiciones aprobados en SPEC 04.
-- [ ] `app/layout.tsx` exporta la única configuración `viewportFit: "cover"` y `app/page.tsx` deja de exportarla.
-- [ ] `/`, `/kids` y las ocho rutas de perfil usan `data-page-scroll-container` y `data-page-content`; no quedan selectores `data-feed-scroll-container` ni `data-feed-content`.
-- [ ] A 1200 × 800, `/kids` coincide con `references/pantallas/ninos.dc.html` en estructura, tipografías, colores, dimensiones, espaciados, bordes, sombras, radios, SVG y contenido; solo se admiten diferencias de rasterizado y antialiasing.
-- [ ] A 1200 × 800, `/kids/1` coincide con `references/pantallas/perfil-nino.dc.html` bajo el mismo criterio de fidelidad.
-- [ ] A 1200 × 800, `/kids/2` a `/kids/8` conservan la estructura, medidas, tipografías, colores, componentes y estados de la plantilla de perfil, con las variaciones de contenido aprobadas.
-- [ ] Por debajo de 768 px el listado usa una columna, la cabecera se adapta al ancho disponible y no existe desbordamiento horizontal.
-- [ ] Por debajo de 768 px el perfil sigue el orden identidad, Editar, alerta, datos, Resumen del día y padres vinculados, sin comprimir regiones en columnas laterales.
-- [ ] A 390 y 767 px la cabecera móvil, el contenido y el drawer respetan los insets de zona segura en orientación vertical y horizontal.
-- [ ] A 768 px se oculta la navegación móvil, aparece el sidebar de 248 px y ambas interfaces adoptan su composición de escritorio sin saltos ni scroll horizontal.
-- [ ] El sidebar permanece fijo y `main` es el único contenedor desplazable en escritorio; en móvil la cabecera queda fuera de ese scroll como en SPEC 04.
-- [ ] Ningún archivo de `components/kids/` ni ninguna página nueva contiene `"use client"`, hooks, efectos o estado React.
-- [ ] `app/globals.css` permanece sin cambios.
-- [ ] No se incorporan dependencias, assets, configuración adicional de Tailwind, `AppShell`, 404 personalizado ni infraestructura de pruebas.
-- [ ] La ruta `/` conserva la interfaz del feed aprobada en SPEC 04 después de mover la navegación, promover el viewport y renombrar los marcadores DOM.
-- [ ] La consola del navegador no muestra errores al cargar, navegar, escribir en la búsqueda ni operar el drawer.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] `/kids` renderiza el listado y `/kids/1` a `/kids/8` renderizan respectivamente los perfiles de Mateo, Sofía, Benjamín, Valentina, Tomás, Emma, Lucas y Olivia.
+- [x] `/kids/01`, `/kids/9`, `/kids/mateo-fernandez` y cualquier parámetro no canónico o desconocido muestran el 404 estándar sin renderizar datos de otro niño.
+- [x] `app/kids/data.ts` contiene una sola colección con los ocho perfiles completos aprobados, sin API, fetch, persistencia ni duplicación entre datos de listado y perfil.
+- [x] `components/kids/kid-card.tsx`, `components/kids/kids-list.tsx` y `components/kids/kid-profile.tsx` existen y reciben los datos mediante los contratos tipados definidos en esta spec.
+- [x] Las ocho tarjetas se renderizan con un único `KidCard` y claves estables basadas en `id`.
+- [x] El listado muestra literalmente los nombres, edades, cantidades de padres, iniciales y badges de `references/pantallas/ninos.dc.html`.
+- [x] Las ocho tarjetas son enlaces accesibles y cada una navega al ID numérico que le corresponde entre `/kids/1` y `/kids/8`.
+- [x] Todas las tarjetas conservan el borde, elevación y cambio de borde del hover mostrado en la referencia.
+- [x] El input muestra `Buscar niño…`, acepta texto sin estado React y escribir no oculta, ordena ni modifica ninguna tarjeta.
+- [x] Agregar niño se presenta como botón, pero no cambia la URL, no modifica contenido y no realiza solicitudes de red.
+- [x] `/kids/1` muestra literalmente el nombre, edad, sala, fecha de nacimiento, ingreso, alerta, padres, relaciones y estados de `references/pantallas/perfil-nino.dc.html`.
+- [x] `/kids/2` a `/kids/8` reutilizan la misma plantilla visual y muestran exactamente los nombres, fechas, ingresos, alertas y padres aprobados en la tabla de fixtures.
+- [x] Solo Mateo y Tomás muestran el bloque `Alergias y notas`; los otros seis perfiles omiten por completo esa región y no muestran un estado neutral.
+- [x] Mateo y Benjamín muestran dos filas de padres, Sofía, Tomás, Emma, Lucas y Olivia muestran una, y Valentina no muestra ninguna fila de padre.
+- [x] Volver a Niños navega desde el perfil a `/kids`.
+- [x] Editar, Resumen del día y Vincular otro padre se presentan como controles, pero no cambian la URL, no modifican contenido y no realizan solicitudes de red.
+- [x] `app/kids/layout.tsx` compone una sola vez el sidebar, la navegación móvil, el contenedor de scroll y el wrapper de contenido para `/kids` y `/kids/[id]`.
+- [x] El sidebar y el drawer se importan desde `components/navigation/`; no permanecen copias bajo `components/feed/` ni `components/kids/`.
+- [x] Feed navega a `/`, Niños navega a `/kids` y el estado activo correcto se comunica visualmente y mediante `aria-current` en cada ruta.
+- [x] En el drawer móvil, pulsar Feed o Niños cierra el panel incluso cuando el destino ya está activo.
+- [x] Avisos, Mi cuenta, Nueva publicación y Cerrar sesión permanecen inertes en escritorio y móvil.
+- [x] Abrir y cerrar el drawer conserva el bloqueo del scroll, el contenido inerte, Escape, overlay, contención de foco, restauración de foco y transiciones aprobados en SPEC 04.
+- [x] `app/layout.tsx` exporta la única configuración `viewportFit: "cover"` y `app/page.tsx` deja de exportarla.
+- [x] `/`, `/kids` y las ocho rutas de perfil usan `data-page-scroll-container` y `data-page-content`; no quedan selectores `data-feed-scroll-container` ni `data-feed-content`.
+- [x] A 1200 × 800, `/kids` coincide con `references/pantallas/ninos.dc.html` en estructura, tipografías, colores, dimensiones, espaciados, bordes, sombras, radios, SVG y contenido; solo se admiten diferencias de rasterizado y antialiasing.
+- [x] A 1200 × 800, `/kids/1` coincide con `references/pantallas/perfil-nino.dc.html` bajo el mismo criterio de fidelidad.
+- [x] A 1200 × 800, `/kids/2` a `/kids/8` conservan la estructura, medidas, tipografías, colores, componentes y estados de la plantilla de perfil, con las variaciones de contenido aprobadas.
+- [x] Por debajo de 768 px el listado usa una columna, la cabecera se adapta al ancho disponible y no existe desbordamiento horizontal.
+- [x] Por debajo de 768 px el perfil sigue el orden identidad, Editar, alerta, datos, Resumen del día y padres vinculados, sin comprimir regiones en columnas laterales.
+- [x] A 390 y 767 px la cabecera móvil, el contenido y el drawer respetan los insets de zona segura en orientación vertical y horizontal.
+- [x] A 768 px se oculta la navegación móvil, aparece el sidebar de 248 px y ambas interfaces adoptan su composición de escritorio sin saltos ni scroll horizontal.
+- [x] El sidebar permanece fijo y `main` es el único contenedor desplazable en escritorio; en móvil la cabecera queda fuera de ese scroll como en SPEC 04.
+- [x] Ningún archivo de `components/kids/` ni ninguna página nueva contiene `"use client"`, hooks, efectos o estado React.
+- [x] `app/globals.css` permanece sin cambios.
+- [x] No se incorporan dependencias, assets, configuración adicional de Tailwind, `AppShell`, 404 personalizado ni infraestructura de pruebas.
+- [x] La ruta `/` conserva la interfaz del feed aprobada en SPEC 04 después de mover la navegación, promover el viewport y renombrar los marcadores DOM.
+- [x] La consola del navegador no muestra errores al cargar, navegar, escribir en la búsqueda ni operar el drawer.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
