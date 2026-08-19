@@ -74,17 +74,19 @@ export function MobileNavigation(props: MobileNavigationProps) {
     wasOpenRef.current = true;
     closeButtonRef.current?.focus();
 
-    const mainElement = menuButtonRef.current?.closest("main");
-    const feedContent = mainElement?.querySelector<HTMLElement>(
+    const scrollContainer = document.querySelector<HTMLElement>(
+      "[data-feed-scroll-container]",
+    );
+    const feedContent = scrollContainer?.querySelector<HTMLElement>(
       "[data-feed-content]",
     );
-    const previousOverflowY = mainElement?.style.overflowY;
+    const previousOverflowY = scrollContainer?.style.overflowY;
     const wasFeedInert = feedContent?.inert ?? false;
     const previousAriaHidden =
       feedContent?.getAttribute("aria-hidden") ?? null;
 
-    if (mainElement) {
-      mainElement.style.overflowY = "hidden";
+    if (scrollContainer) {
+      scrollContainer.style.overflowY = "hidden";
     }
 
     if (feedContent) {
@@ -138,8 +140,8 @@ export function MobileNavigation(props: MobileNavigationProps) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
 
-      if (mainElement) {
-        mainElement.style.overflowY = previousOverflowY ?? "";
+      if (scrollContainer) {
+        scrollContainer.style.overflowY = previousOverflowY ?? "";
       }
 
       if (feedContent) {
