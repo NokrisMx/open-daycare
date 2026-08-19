@@ -1,27 +1,4 @@
-import type { KidSummary } from "@/components/kids/kid-card";
-
-type ParentStatus = "active" | "pending";
-
-type LinkedParent = {
-  id: number;
-  name: string;
-  initial: string;
-  relationshipLabel: string;
-  statusLabel: string;
-  status: ParentStatus;
-  avatarTone: "purple" | "blue";
-};
-
-type KidProfileData = KidSummary & {
-  roomName: string;
-  birthDateLabel: string;
-  enrollmentLabel: string;
-  note?: {
-    title: string;
-    body: string;
-  };
-  linkedParents: readonly LinkedParent[];
-};
+import type { KidProfileData } from "@/components/kids/kid-profile";
 
 export const kids: readonly KidProfileData[] = [
   {
