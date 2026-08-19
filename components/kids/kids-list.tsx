@@ -118,11 +118,22 @@ export function KidsList({ roomName, kids }: KidsListProps) {
         <span aria-hidden="true" className="h-px flex-1 bg-[#E7DAC8]" />
       </div>
 
-      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-        {visibleKids.map((kid) => (
-          <KidCard key={kid.id} kid={kid} />
-        ))}
-      </div>
+      {visibleKids.length === 0 ? (
+        <div className="w-full rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-6 py-10 text-center shadow-[0_4px_14px_-12px_rgba(120,90,60,0.5)]">
+          <p className="font-display text-base font-semibold text-[#3F362E]">
+            No se encontraron niños.
+          </p>
+          <p className="mt-1 text-[13px] text-[#A89A8B]">
+            Prueba con otro nombre.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
+          {visibleKids.map((kid) => (
+            <KidCard key={kid.id} kid={kid} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
