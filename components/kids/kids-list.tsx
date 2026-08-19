@@ -108,12 +108,18 @@ export function KidsList({ roomName, kids }: KidsListProps) {
         <h2 className="text-[12.5px] font-extrabold tracking-[0.8px] text-[#3F362E]">
           {roomName.toUpperCase()}
         </h2>
-        <span className="text-[13px] text-[#A89A8B]">{kids.length} niños</span>
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          className="text-[13px] text-[#A89A8B]"
+        >
+          {visibleKids.length} {visibleKids.length === 1 ? "niño" : "niños"}
+        </span>
         <span aria-hidden="true" className="h-px flex-1 bg-[#E7DAC8]" />
       </div>
 
       <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-        {kids.map((kid) => (
+        {visibleKids.map((kid) => (
           <KidCard key={kid.id} kid={kid} />
         ))}
       </div>
