@@ -1,6 +1,6 @@
 # SPEC 04 — Cabecera móvil, scroll y zonas seguras
 
-> **Estado:** Borrador
+> **Estado:** Aprobado
 > **Depende de:** SPEC 03
 > **Fecha:** 2026-08-18
 > **Objetivo:** Corregir por debajo de 768 px la separación lateral de la barra móvil colocándola fuera del contenedor desplazable y haciendo que toda la vista respete las zonas seguras, sin alterar el drawer ni la presentación de escritorio.
@@ -104,14 +104,14 @@ Esta funcionalidad no introduce datos de dominio, persistencia ni estado nuevo. 
 
 ## Riesgos
 
-| Riesgo                                                                                             | Mitigación                                                                                                                              |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Mover `MobileNavigation` fuera de `main` puede romper el bloqueo y la restauración del scroll.      | Identificar el contenedor con `data-feed-scroll-container` antes de mover el componente y verificar cada vía de cierre.                 |
-| Una combinación incorrecta de altura dinámica y flex puede crear un segundo scroll en `body`.      | Usar un shell móvil de `100dvh`, hacer que `main` sea flexible con `min-height: 0` y comprobar que solo `main` se desplaza.               |
-| `viewport-fit=cover` puede llevar contenido debajo del notch o del indicador inferior.             | Aplicar los insets a todos los bordes relevantes y validar perfiles con insets no nulos en ambas orientaciones.                         |
-| El inset izquierdo puede estrechar el contenido del drawer si su ancho total permanece fijo.       | Sumar `safe-area-inset-left` a los 248 px del panel para conservar su ancho útil.                                                        |
-| Una emulación móvil sin recorte de pantalla puede devolver todos los insets como cero.              | Complementar las verificaciones por ancho con un perfil o emulación de display cutout que exponga insets no nulos.                      |
-| Cambiar la posición de la barra puede modificar accidentalmente el espaciado o el breakpoint actual. | Conservar sus paddings base, mantener 24 px antes del feed y comparar 390, 767 y 768 px con los estados cerrado y abierto.                |
+| Riesgo                                                                                               | Mitigación                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Mover `MobileNavigation` fuera de `main` puede romper el bloqueo y la restauración del scroll.       | Identificar el contenedor con `data-feed-scroll-container` antes de mover el componente y verificar cada vía de cierre.     |
+| Una combinación incorrecta de altura dinámica y flex puede crear un segundo scroll en `body`.        | Usar un shell móvil de `100dvh`, hacer que `main` sea flexible con `min-height: 0` y comprobar que solo `main` se desplaza. |
+| `viewport-fit=cover` puede llevar contenido debajo del notch o del indicador inferior.               | Aplicar los insets a todos los bordes relevantes y validar perfiles con insets no nulos en ambas orientaciones.             |
+| El inset izquierdo puede estrechar el contenido del drawer si su ancho total permanece fijo.         | Sumar `safe-area-inset-left` a los 248 px del panel para conservar su ancho útil.                                           |
+| Una emulación móvil sin recorte de pantalla puede devolver todos los insets como cero.               | Complementar las verificaciones por ancho con un perfil o emulación de display cutout que exponga insets no nulos.          |
+| Cambiar la posición de la barra puede modificar accidentalmente el espaciado o el breakpoint actual. | Conservar sus paddings base, mantener 24 px antes del feed y comparar 390, 767 y 768 px con los estados cerrado y abierto.  |
 
 ## Lo que **no** incluye esta spec
 
