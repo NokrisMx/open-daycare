@@ -2,10 +2,10 @@ import type { Viewport } from "next";
 
 import { ComposerPrompt } from "@/components/feed/composer-prompt";
 import { FeedHeader } from "@/components/feed/feed-header";
-import { MobileNavigation } from "@/components/feed/mobile-navigation";
+import { MobileNavigation } from "@/components/navigation/mobile-navigation";
 import { PostCard, type FeedPost } from "@/components/feed/post-card";
 import { SectionDivider } from "@/components/feed/section-divider";
-import { Sidebar, type SidebarProps } from "@/components/feed/sidebar";
+import { Sidebar, type SidebarProps } from "@/components/navigation/sidebar";
 
 export const viewport: Viewport = {
   viewportFit: "cover",

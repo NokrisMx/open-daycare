@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   SidebarContent,
   type SidebarProps,
-} from "@/components/feed/sidebar";
+} from "@/components/navigation/sidebar";
 
 export type MobileNavigationProps = SidebarProps;
 
