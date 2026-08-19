@@ -1,0 +1,226 @@
+import type { KidSummary } from "@/components/kids/kid-card";
+
+type ParentStatus = "active" | "pending";
+
+type LinkedParent = {
+  id: number;
+  name: string;
+  initial: string;
+  relationshipLabel: string;
+  statusLabel: string;
+  status: ParentStatus;
+  avatarTone: "purple" | "blue";
+};
+
+type KidProfileData = KidSummary & {
+  roomName: string;
+  birthDateLabel: string;
+  enrollmentLabel: string;
+  note?: {
+    title: string;
+    body: string;
+  };
+  linkedParents: readonly LinkedParent[];
+};
+
+export const kids: readonly KidProfileData[] = [
+  {
+    id: 1,
+    name: "Mateo Fernández",
+    initial: "M",
+    ageLabel: "3 años",
+    linkedParentsLabel: "2 padres vinculados",
+    avatarTone: "sky",
+    badge: { label: "MANÍ", tone: "allergy" },
+    roomName: "Sala Soles",
+    birthDateLabel: "12 mar 2022",
+    enrollmentLabel: "feb 2025",
+    note: {
+      title: "Alergias y notas",
+      body: "Alergia al maní. Evitar frutos secos. Lleva inhalador en la mochila.",
+    },
+    linkedParents: [
+      {
+        id: 1,
+        name: "Lucía Fernández",
+        initial: "L",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+      {
+        id: 2,
+        name: "Diego Fernández",
+        initial: "D",
+        relationshipLabel: "Papá",
+        statusLabel: "invitación enviada",
+        status: "pending",
+        avatarTone: "blue",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Sofía Méndez",
+    initial: "S",
+    ageLabel: "2 años",
+    linkedParentsLabel: "1 padre vinculado",
+    avatarTone: "pink",
+    roomName: "Sala Soles",
+    birthDateLabel: "8 sep 2022",
+    enrollmentLabel: "mar 2025",
+    linkedParents: [
+      {
+        id: 3,
+        name: "Mariana Méndez",
+        initial: "M",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Benjamín Ruiz",
+    initial: "B",
+    ageLabel: "3 años",
+    linkedParentsLabel: "2 padres vinculados",
+    avatarTone: "green",
+    roomName: "Sala Soles",
+    birthDateLabel: "21 nov 2021",
+    enrollmentLabel: "feb 2024",
+    linkedParents: [
+      {
+        id: 4,
+        name: "Paula Ruiz",
+        initial: "P",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+      {
+        id: 5,
+        name: "Nicolás Ruiz",
+        initial: "N",
+        relationshipLabel: "Papá",
+        statusLabel: "activo",
+        status: "active",
+        avatarTone: "blue",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Valentina Soto",
+    initial: "V",
+    ageLabel: "2 años",
+    linkedParentsLabel: "sin padres vinculados",
+    avatarTone: "yellow",
+    badge: { label: "VINCULAR", tone: "link" },
+    roomName: "Sala Soles",
+    birthDateLabel: "5 dic 2022",
+    enrollmentLabel: "abr 2025",
+    linkedParents: [],
+  },
+  {
+    id: 5,
+    name: "Tomás Díaz",
+    initial: "T",
+    ageLabel: "3 años",
+    linkedParentsLabel: "1 padre vinculado",
+    avatarTone: "purple",
+    badge: { label: "LACTOSA", tone: "allergy" },
+    roomName: "Sala Soles",
+    birthDateLabel: "30 ene 2022",
+    enrollmentLabel: "mar 2024",
+    note: {
+      title: "Alergias y notas",
+      body: "Intolerancia a la lactosa. Consumir únicamente alimentos y bebidas sin lactosa.",
+    },
+    linkedParents: [
+      {
+        id: 6,
+        name: "Gabriela Díaz",
+        initial: "G",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Emma Castro",
+    initial: "E",
+    ageLabel: "2 años",
+    linkedParentsLabel: "1 padre vinculado",
+    avatarTone: "pink",
+    roomName: "Sala Soles",
+    birthDateLabel: "14 oct 2022",
+    enrollmentLabel: "feb 2025",
+    linkedParents: [
+      {
+        id: 7,
+        name: "Laura Castro",
+        initial: "L",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Lucas Romero",
+    initial: "L",
+    ageLabel: "3 años",
+    linkedParentsLabel: "1 padre vinculado",
+    avatarTone: "sky",
+    roomName: "Sala Soles",
+    birthDateLabel: "3 may 2022",
+    enrollmentLabel: "mar 2024",
+    linkedParents: [
+      {
+        id: 8,
+        name: "Martín Romero",
+        initial: "M",
+        relationshipLabel: "Papá",
+        statusLabel: "activo",
+        status: "active",
+        avatarTone: "purple",
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "Olivia Vega",
+    initial: "O",
+    ageLabel: "2 años",
+    linkedParentsLabel: "1 padre vinculado",
+    avatarTone: "green",
+    roomName: "Sala Soles",
+    birthDateLabel: "27 ago 2022",
+    enrollmentLabel: "abr 2025",
+    linkedParents: [
+      {
+        id: 9,
+        name: "Camila Vega",
+        initial: "C",
+        relationshipLabel: "Mamá",
+        statusLabel: "activa",
+        status: "active",
+        avatarTone: "purple",
+      },
+    ],
+  },
+];
+
+export function getKidById(id: number): KidProfileData | undefined {
+  return kids.find((kid) => kid.id === id);
+}
