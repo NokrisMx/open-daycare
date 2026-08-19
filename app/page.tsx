@@ -54,15 +54,14 @@ const posts: FeedPost[] = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-[#F6ECDF]">
+    <div className="flex h-dvh flex-col bg-[#F6ECDF] md:h-screen md:flex-row">
       <Sidebar {...sidebarProps} />
+      <MobileNavigation {...sidebarProps} />
 
       <main
         data-feed-scroll-container
-        className="h-screen w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable]"
+        className="min-h-0 w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable] md:h-screen"
       >
-        <MobileNavigation {...sidebarProps} />
-
         <div
           data-feed-content
           className="mx-auto w-full max-w-[760px] px-4 pt-6 pb-12 md:px-10 md:pt-[34px] md:pb-20"
