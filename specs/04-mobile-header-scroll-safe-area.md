@@ -1,6 +1,6 @@
 # SPEC 04 — Cabecera móvil, scroll y zonas seguras
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 03
 > **Fecha:** 2026-08-18
 > **Objetivo:** Corregir por debajo de 768 px la separación lateral de la barra móvil colocándola fuera del contenedor desplazable y haciendo que toda la vista respete las zonas seguras, sin alterar el drawer ni la presentación de escritorio.
@@ -59,33 +59,33 @@ Esta funcionalidad no introduce datos de dominio, persistencia ni estado nuevo. 
 
 ## Criterios de aceptación
 
-- [ ] Los únicos archivos de aplicación modificados son `app/page.tsx` y `components/feed/mobile-navigation.tsx`.
-- [ ] `app/page.tsx` exporta una configuración estática de viewport que genera `viewport-fit=cover`.
-- [ ] Por debajo de 768 px `MobileNavigation` se renderiza fuera de `main` y la barra no forma parte del contenedor desplazable.
-- [ ] El shell móvil usa la altura del viewport dinámico, dispone la barra y el feed en columna y no produce scroll adicional en `body`.
-- [ ] `main` ocupa todo el espacio restante debajo de la barra, conserva el scroll vertical independiente y sigue ocultando el desbordamiento horizontal.
-- [ ] `main` expone `data-feed-scroll-container` y `MobileNavigation` usa ese marcador para bloquear y restaurar su scroll.
-- [ ] Con contenido suficiente para producir scroll, la barra móvil cubre todo el ancho disponible sin dejar una franja vertical a la derecha.
-- [ ] Cuando el navegador muestra un scrollbar nativo, su canal comienza debajo de la barra y permanece junto al feed.
-- [ ] La barra continúa visible mientras se desplaza el feed, sin usar una posición que cubra el contenido.
-- [ ] El contenido conserva 24 px de separación superior respecto de la barra y mantiene sus dimensiones actuales cuando los insets valen cero.
-- [ ] A 390 y 767 px no existe desbordamiento horizontal con el menú cerrado ni abierto.
-- [ ] A 768 px la barra y el drawer móviles permanecen ocultos, y el sidebar, el feed y su scroll conservan la presentación aprobada en SPEC 03.
-- [ ] Los paddings móviles de la barra, el feed y el drawer suman los insets relevantes a sus valores base mediante CSS `env()`.
-- [ ] En un perfil iPhone vertical con insets no nulos, la marca, la hamburguesa, el feed y el perfil del drawer no quedan debajo del notch ni del indicador inferior.
-- [ ] En un perfil iPhone horizontal con insets no nulos, la barra, el feed y el drawer evitan los bordes inseguros sin recortar controles ni texto.
-- [ ] Cuando existe `safe-area-inset-left`, el ancho total del drawer es 248 px más ese inset y su contenido conserva el ancho útil actual.
-- [ ] Cuando todos los insets valen cero, la barra, el feed y el drawer coinciden con la presentación actual salvo por la franja lateral corregida.
-- [ ] El overlay cubre la barra, el feed y las zonas seguras mientras el drawer está abierto.
-- [ ] Abrir el drawer bloquea el scroll y la interacción del feed, pero mantiene disponible su propio scroll interno.
-- [ ] El botón X, Escape y el overlay cierran el drawer, y los controles internos inertes no lo cierran ni ejecutan acciones.
-- [ ] El foco pasa a la X al abrir, permanece dentro del drawer y vuelve a la hamburguesa al cerrar.
-- [ ] No se añaden detección de dispositivo u orientación, estado, efectos ni listeners para implementar las zonas seguras.
-- [ ] `app/layout.tsx`, `app/globals.css`, `components/feed/sidebar.tsx` y los demás componentes del feed permanecen sin cambios.
-- [ ] No se incorporan dependencias, configuración adicional, assets ni infraestructura de pruebas.
-- [ ] La consola del navegador no muestra errores al cargar, desplazar el feed ni operar el drawer.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] Los únicos archivos de aplicación modificados son `app/page.tsx` y `components/feed/mobile-navigation.tsx`.
+- [x] `app/page.tsx` exporta una configuración estática de viewport que genera `viewport-fit=cover`.
+- [x] Por debajo de 768 px `MobileNavigation` se renderiza fuera de `main` y la barra no forma parte del contenedor desplazable.
+- [x] El shell móvil usa la altura del viewport dinámico, dispone la barra y el feed en columna y no produce scroll adicional en `body`.
+- [x] `main` ocupa todo el espacio restante debajo de la barra, conserva el scroll vertical independiente y sigue ocultando el desbordamiento horizontal.
+- [x] `main` expone `data-feed-scroll-container` y `MobileNavigation` usa ese marcador para bloquear y restaurar su scroll.
+- [x] Con contenido suficiente para producir scroll, la barra móvil cubre todo el ancho disponible sin dejar una franja vertical a la derecha.
+- [x] Cuando el navegador muestra un scrollbar nativo, su canal comienza debajo de la barra y permanece junto al feed.
+- [x] La barra continúa visible mientras se desplaza el feed, sin usar una posición que cubra el contenido.
+- [x] El contenido conserva 24 px de separación superior respecto de la barra y mantiene sus dimensiones actuales cuando los insets valen cero.
+- [x] A 390 y 767 px no existe desbordamiento horizontal con el menú cerrado ni abierto.
+- [x] A 768 px la barra y el drawer móviles permanecen ocultos, y el sidebar, el feed y su scroll conservan la presentación aprobada en SPEC 03.
+- [x] Los paddings móviles de la barra, el feed y el drawer suman los insets relevantes a sus valores base mediante CSS `env()`.
+- [x] En un perfil iPhone vertical con insets no nulos, la marca, la hamburguesa, el feed y el perfil del drawer no quedan debajo del notch ni del indicador inferior.
+- [x] En un perfil iPhone horizontal con insets no nulos, la barra, el feed y el drawer evitan los bordes inseguros sin recortar controles ni texto.
+- [x] Cuando existe `safe-area-inset-left`, el ancho total del drawer es 248 px más ese inset y su contenido conserva el ancho útil actual.
+- [x] Cuando todos los insets valen cero, la barra, el feed y el drawer coinciden con la presentación actual salvo por la franja lateral corregida.
+- [x] El overlay cubre la barra, el feed y las zonas seguras mientras el drawer está abierto.
+- [x] Abrir el drawer bloquea el scroll y la interacción del feed, pero mantiene disponible su propio scroll interno.
+- [x] El botón X, Escape y el overlay cierran el drawer, y los controles internos inertes no lo cierran ni ejecutan acciones.
+- [x] El foco pasa a la X al abrir, permanece dentro del drawer y vuelve a la hamburguesa al cerrar.
+- [x] No se añaden detección de dispositivo u orientación, estado, efectos ni listeners para implementar las zonas seguras.
+- [x] `app/layout.tsx`, `app/globals.css`, `components/feed/sidebar.tsx` y los demás componentes del feed permanecen sin cambios.
+- [x] No se incorporan dependencias, configuración adicional, assets ni infraestructura de pruebas.
+- [x] La consola del navegador no muestra errores al cargar, desplazar el feed ni operar el drawer.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
