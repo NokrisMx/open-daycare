@@ -5,8 +5,8 @@ import { AuthField } from "@/components/auth/auth-field";
 
 export default function ActivateAccountPage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#FBF4EC] p-10">
-      <div className="w-full max-w-[440px]">
+    <main className="flex min-h-dvh min-w-0 items-start justify-center overflow-x-hidden bg-[#FBF4EC] pt-[calc(1.5rem+env(safe-area-inset-top))] pr-[calc(1.25rem+env(safe-area-inset-right))] pb-[calc(2rem+env(safe-area-inset-bottom))] pl-[calc(1.25rem+env(safe-area-inset-left))] md:min-h-screen md:items-center md:p-10">
+      <div className="min-w-0 w-full max-w-[440px]">
         <div className="mb-[22px]">
           <AuthBrand variant="activation" />
         </div>
