@@ -1,6 +1,6 @@
 # SPEC 05 — Listado y perfiles de niños
 
-> **Estado:** Aprovado
+> **Estado:** Implementado
 > **Depende de:** SPEC 04
 > **Fecha:** 2026-08-19
 > **Objetivo:** Implementar las interfaces visuales responsive del listado y los ocho perfiles de niños en `/kids` y `/kids/[id]`, reutilizando la navegación existente y datos estáticos tipados, sin API, persistencia ni acciones de gestión.
