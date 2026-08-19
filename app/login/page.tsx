@@ -5,8 +5,8 @@ import { AuthField } from "@/components/auth/auth-field";
 
 export default function LoginPage() {
   return (
-    <main className="grid min-h-screen grid-cols-[1.05fr_1fr] bg-[#FBF4EC]">
-      <section className="relative flex flex-col justify-between overflow-hidden bg-[linear-gradient(155deg,#F6A98E_0%,#F2937A_45%,#EC7E62_100%)] px-[60px] py-14 text-white">
+    <main className="min-h-dvh min-w-0 overflow-x-hidden bg-[#FBF4EC] md:grid md:min-h-screen md:grid-cols-[1.05fr_1fr]">
+      <section className="relative hidden flex-col justify-between overflow-hidden bg-[linear-gradient(155deg,#F6A98E_0%,#F2937A_45%,#EC7E62_100%)] px-[60px] py-14 text-white md:flex">
         <div className="absolute -top-[140px] -right-[120px] size-[420px] rounded-full bg-white/12" />
         <div className="absolute -bottom-[110px] -left-20 size-[300px] rounded-full bg-white/10" />
 
@@ -31,8 +31,12 @@ export default function LoginPage() {
         </p>
       </section>
 
-      <section className="flex items-center justify-center p-10">
+      <section className="flex min-h-dvh min-w-0 items-start justify-center pt-[calc(2rem+env(safe-area-inset-top))] pr-[calc(1.5rem+env(safe-area-inset-right))] pb-[calc(2rem+env(safe-area-inset-bottom))] pl-[calc(1.5rem+env(safe-area-inset-left))] md:min-h-0 md:items-center md:p-10">
         <div className="w-full max-w-[392px]">
+          <div className="mb-10 md:hidden">
+            <AuthBrand variant="compact" />
+          </div>
+
           <h2 className="mb-1.5 font-display text-[30px] font-semibold text-[#3F362E]">
             Iniciar sesión
           </h2>
