@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { KidCard, type KidSummary } from "@/components/kids/kid-card";
 
@@ -11,6 +11,19 @@ export type KidsListProps = {
 
 export function KidsList({ roomName, kids }: KidsListProps) {
   const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+
+  useEffect(() => {
+    if (query.trim() === "") {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 300);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [query]);
 
   return (
     <section>
@@ -66,7 +79,14 @@ export function KidsList({ roomName, kids }: KidsListProps) {
           aria-label="Buscar niño"
           placeholder="Buscar niño…"
           value={query}
-          onChange={(event) => setQuery(event.currentTarget.value)}
+          onChange={(event) => {
+            const nextQuery = event.currentTarget.value;
+
+            setQuery(nextQuery);
+            if (nextQuery.trim() === "") {
+              setDebouncedQuery("");
+            }
+          }}
           className="min-w-0 flex-1 border-0 bg-transparent px-0.5 py-px text-[15px] text-[#3F362E] outline-none placeholder:text-[#B6A99B]"
         />
       </div>
