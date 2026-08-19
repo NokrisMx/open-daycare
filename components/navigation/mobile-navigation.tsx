@@ -75,23 +75,23 @@ export function MobileNavigation(props: MobileNavigationProps) {
     closeButtonRef.current?.focus();
 
     const scrollContainer = document.querySelector<HTMLElement>(
-      "[data-feed-scroll-container]",
+      "[data-page-scroll-container]",
     );
-    const feedContent = scrollContainer?.querySelector<HTMLElement>(
-      "[data-feed-content]",
+    const pageContent = scrollContainer?.querySelector<HTMLElement>(
+      "[data-page-content]",
     );
     const previousOverflowY = scrollContainer?.style.overflowY;
-    const wasFeedInert = feedContent?.inert ?? false;
+    const wasPageContentInert = pageContent?.inert ?? false;
     const previousAriaHidden =
-      feedContent?.getAttribute("aria-hidden") ?? null;
+      pageContent?.getAttribute("aria-hidden") ?? null;
 
     if (scrollContainer) {
       scrollContainer.style.overflowY = "hidden";
     }
 
-    if (feedContent) {
-      feedContent.inert = true;
-      feedContent.setAttribute("aria-hidden", "true");
+    if (pageContent) {
+      pageContent.inert = true;
+      pageContent.setAttribute("aria-hidden", "true");
     }
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -144,13 +144,13 @@ export function MobileNavigation(props: MobileNavigationProps) {
         scrollContainer.style.overflowY = previousOverflowY ?? "";
       }
 
-      if (feedContent) {
-        feedContent.inert = wasFeedInert;
+      if (pageContent) {
+        pageContent.inert = wasPageContentInert;
 
         if (previousAriaHidden === null) {
-          feedContent.removeAttribute("aria-hidden");
+          pageContent.removeAttribute("aria-hidden");
         } else {
-          feedContent.setAttribute("aria-hidden", previousAriaHidden);
+          pageContent.setAttribute("aria-hidden", previousAriaHidden);
         }
       }
     };

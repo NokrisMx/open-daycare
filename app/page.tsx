@@ -1,15 +1,9 @@
-import type { Viewport } from "next";
-
 import { ComposerPrompt } from "@/components/feed/composer-prompt";
 import { FeedHeader } from "@/components/feed/feed-header";
 import { MobileNavigation } from "@/components/navigation/mobile-navigation";
 import { PostCard, type FeedPost } from "@/components/feed/post-card";
 import { SectionDivider } from "@/components/feed/section-divider";
 import { Sidebar, type SidebarProps } from "@/components/navigation/sidebar";
-
-export const viewport: Viewport = {
-  viewportFit: "cover",
-};
 
 const sidebarProps = {
   roomName: "Sala Soles",
@@ -65,11 +59,11 @@ export default function Home() {
       <MobileNavigation {...sidebarProps} />
 
       <main
-        data-feed-scroll-container
+        data-page-scroll-container
         className="min-h-0 w-full min-w-0 flex-1 overflow-x-hidden overflow-y-auto [scrollbar-gutter:stable] md:h-screen"
       >
         <div
-          data-feed-content
+          data-page-content
           className="mx-auto w-full max-w-[760px] pt-6 pr-[calc(1rem+env(safe-area-inset-right))] pb-[calc(3rem+env(safe-area-inset-bottom))] pl-[calc(1rem+env(safe-area-inset-left))] md:px-10 md:pt-[34px] md:pb-20"
         >
           <FeedHeader
