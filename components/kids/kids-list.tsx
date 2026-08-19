@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import { KidCard, type KidSummary } from "@/components/kids/kid-card";
 
 export type KidsListProps = {
@@ -5,7 +9,35 @@ export type KidsListProps = {
   kids: readonly KidSummary[];
 };
 
+function normalizeText(value: string) {
+  return value
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 export function KidsList({ roomName, kids }: KidsListProps) {
+  const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+
+  useEffect(() => {
+    if (query.trim() === "") {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 300);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [query]);
+
+  const normalizedQuery = normalizeText(debouncedQuery);
+  const visibleKids = normalizedQuery
+    ? kids.filter((kid) => normalizeText(kid.name).includes(normalizedQuery))
+    : kids;
+
   return (
     <section>
       <header className="mb-[22px] flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end sm:gap-4">
@@ -59,6 +91,15 @@ export function KidsList({ roomName, kids }: KidsListProps) {
           type="text"
           aria-label="Buscar niño"
           placeholder="Buscar niño…"
+          value={query}
+          onChange={(event) => {
+            const nextQuery = event.currentTarget.value;
+
+            setQuery(nextQuery);
+            if (nextQuery.trim() === "") {
+              setDebouncedQuery("");
+            }
+          }}
           className="min-w-0 flex-1 border-0 bg-transparent px-0.5 py-px text-[15px] text-[#3F362E] outline-none placeholder:text-[#B6A99B]"
         />
       </div>
@@ -67,15 +108,32 @@ export function KidsList({ roomName, kids }: KidsListProps) {
         <h2 className="text-[12.5px] font-extrabold tracking-[0.8px] text-[#3F362E]">
           {roomName.toUpperCase()}
         </h2>
-        <span className="text-[13px] text-[#A89A8B]">{kids.length} niños</span>
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          className="text-[13px] text-[#A89A8B]"
+        >
+          {visibleKids.length} {visibleKids.length === 1 ? "niño" : "niños"}
+        </span>
         <span aria-hidden="true" className="h-px flex-1 bg-[#E7DAC8]" />
       </div>
 
-      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-        {kids.map((kid) => (
-          <KidCard key={kid.id} kid={kid} />
-        ))}
-      </div>
+      {visibleKids.length === 0 ? (
+        <div className="w-full rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-6 py-10 text-center shadow-[0_4px_14px_-12px_rgba(120,90,60,0.5)]">
+          <p className="font-display text-base font-semibold text-[#3F362E]">
+            No se encontraron niños.
+          </p>
+          <p className="mt-1 text-[13px] text-[#A89A8B]">
+            Prueba con otro nombre.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
+          {visibleKids.map((kid) => (
+            <KidCard key={kid.id} kid={kid} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
