@@ -109,43 +109,43 @@ Ningún valor se enviará, validará, persistirá ni utilizará para decidir el 
 
 ## Criterios de aceptación
 
-- [ ] `/login` y `/activate-account` cargan directamente sin errores y no alteran el contenido de `/`.
-- [ ] Los únicos archivos de aplicación añadidos son `app/login/page.tsx`, `app/activate-account/page.tsx`, `components/auth/auth-brand.tsx` y `components/auth/auth-field.tsx`.
-- [ ] `/login` no muestra `INGRESO COMO`, Personal, Familia ni un espacio vacío reservado para esos controles.
-- [ ] A 1200 × 800, `/login` coincide con `references/pantallas/login.dc.html` en estructura restante, contenido, tipografías, colores, medidas, espaciados, bordes, sombras, radios, fondos y SVG; solo se admiten la eliminación acordada del selector y diferencias de rasterizado o antialiasing.
-- [ ] El panel izquierdo del login conserva el gradiente coral, los dos círculos decorativos, la marca, el texto principal, la descripción y `🌿 Guardería Sala Soles`.
-- [ ] El área derecha del login conserva el ancho máximo de 392 px, el título, el texto introductorio, los campos, la recuperación, el CTA y el enlace de activación.
-- [ ] El email de login muestra inicialmente `caro@opendaycare.com` y permanece editable.
-- [ ] La contraseña de login comienza vacía, usa `type="password"` y muestra el placeholder `••••••••`.
-- [ ] `¿Olvidaste tu contraseña?` es accesible como botón, pero no cambia la URL, no modifica contenido y no inicia una solicitud de recuperación.
-- [ ] Pulsar `Iniciar sesión` desde `/login` navega a `/` independientemente de los valores escritos.
-- [ ] Pulsar `Activá tu cuenta` desde `/login` navega a `/activate-account`.
-- [ ] A 1200 × 800, `/activate-account` coincide con `references/pantallas/activar-cuenta.dc.html` en estructura, contenido, tipografías, colores, medidas, espaciados, bordes, sombras, radios y SVG; solo se admiten diferencias de rasterizado o antialiasing.
-- [ ] La activación muestra literalmente `Bienvenida a OpenDayCare`, el texto introductorio y la invitación para `Mateo · Sala Soles` con la inicial `M`.
-- [ ] El código muestra inicialmente `7K4P9`, usa la presentación Fredoka espaciada y permanece editable.
-- [ ] El email de activación muestra inicialmente `lucia.fernandez@gmail.com` y permanece editable.
-- [ ] La contraseña de activación muestra inicialmente `contraseña` mediante `type="password"`, conserva el borde coral y permanece editable.
-- [ ] Cada etiqueta visible está asociada programáticamente con su input y cada campo tiene `name`, `type` y `autoComplete` adecuados.
-- [ ] La autorización de fotos es un checkbox nativo inicialmente marcado y se puede marcar o desmarcar con puntero y teclado.
-- [ ] Cambiar el consentimiento no modifica el CTA, no muestra validación y no bloquea la navegación.
-- [ ] Pulsar `Activar mi cuenta` desde `/activate-account` navega a `/` independientemente de los campos y del consentimiento.
-- [ ] Pulsar `Iniciar sesión` desde `/activate-account` navega a `/login`.
-- [ ] `AuthBrand` renderiza las variantes `hero`, `compact` y `activation` sin duplicar el SVG solar en las páginas.
-- [ ] Todos los campos de ambas rutas se renderizan mediante `AuthField` y respetan el contrato y las variantes definidos en esta spec.
-- [ ] Por debajo de 768 px el panel promocional del login no se renderiza visualmente y el formulario muestra antes del título el icono coral junto al nombre OpenDayCare.
-- [ ] A 390 y 767 px ambas rutas usan una sola columna, respetan los insets de zona segura, permiten scroll vertical y no producen desbordamiento horizontal.
-- [ ] A 768 px el login adopta la composición de dos columnas y deja de mostrar la marca compacta móvil sin saltos ni scroll horizontal.
-- [ ] Desde 768 px la activación conserva su contenido centrado con un ancho máximo de 440 px.
-- [ ] Las dos rutas conservan foco visible y orden de tabulación coherente para inputs, checkbox, botones y enlaces.
-- [ ] Ninguno de los cuatro archivos nuevos contiene `"use client"`, hooks, efectos, handlers de estado o inputs controlados.
-- [ ] Las páginas no consultan una API, no escriben cookies o almacenamiento y no crean una sesión.
-- [ ] Entrar a `/login` o `/activate-account` no redirige automáticamente ni protege `/`, `/kids` o sus perfiles.
-- [ ] El sidebar, el drawer móvil y el control Cerrar sesión permanecen sin cambios y Cerrar sesión continúa inerte.
-- [ ] `app/layout.tsx`, `app/globals.css`, el feed, las rutas de niños y los componentes de navegación permanecen sin cambios.
-- [ ] No se incorporan dependencias, assets, primitivas genéricas, rutas adicionales ni infraestructura de pruebas automatizadas.
-- [ ] La consola del navegador no muestra errores al cargar, editar campos, alternar el checkbox o navegar entre las rutas acordadas.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] `/login` y `/activate-account` cargan directamente sin errores y no alteran el contenido de `/`.
+- [x] Los únicos archivos de aplicación añadidos son `app/login/page.tsx`, `app/activate-account/page.tsx`, `components/auth/auth-brand.tsx` y `components/auth/auth-field.tsx`.
+- [x] `/login` no muestra `INGRESO COMO`, Personal, Familia ni un espacio vacío reservado para esos controles.
+- [x] A 1200 × 800, `/login` coincide con `references/pantallas/login.dc.html` en estructura restante, contenido, tipografías, colores, medidas, espaciados, bordes, sombras, radios, fondos y SVG; solo se admiten la eliminación acordada del selector y diferencias de rasterizado o antialiasing.
+- [x] El panel izquierdo del login conserva el gradiente coral, los dos círculos decorativos, la marca, el texto principal, la descripción y `🌿 Guardería Sala Soles`.
+- [x] El área derecha del login conserva el ancho máximo de 392 px, el título, el texto introductorio, los campos, la recuperación, el CTA y el enlace de activación.
+- [x] El email de login muestra inicialmente `caro@opendaycare.com` y permanece editable.
+- [x] La contraseña de login comienza vacía, usa `type="password"` y muestra el placeholder `••••••••`.
+- [x] `¿Olvidaste tu contraseña?` es accesible como botón, pero no cambia la URL, no modifica contenido y no inicia una solicitud de recuperación.
+- [x] Pulsar `Iniciar sesión` desde `/login` navega a `/` independientemente de los valores escritos.
+- [x] Pulsar `Activá tu cuenta` desde `/login` navega a `/activate-account`.
+- [x] A 1200 × 800, `/activate-account` coincide con `references/pantallas/activar-cuenta.dc.html` en estructura, contenido, tipografías, colores, medidas, espaciados, bordes, sombras, radios y SVG; solo se admiten diferencias de rasterizado o antialiasing.
+- [x] La activación muestra literalmente `Bienvenida a OpenDayCare`, el texto introductorio y la invitación para `Mateo · Sala Soles` con la inicial `M`.
+- [x] El código muestra inicialmente `7K4P9`, usa la presentación Fredoka espaciada y permanece editable.
+- [x] El email de activación muestra inicialmente `lucia.fernandez@gmail.com` y permanece editable.
+- [x] La contraseña de activación muestra inicialmente `contraseña` mediante `type="password"`, conserva el borde coral y permanece editable.
+- [x] Cada etiqueta visible está asociada programáticamente con su input y cada campo tiene `name`, `type` y `autoComplete` adecuados.
+- [x] La autorización de fotos es un checkbox nativo inicialmente marcado y se puede marcar o desmarcar con puntero y teclado.
+- [x] Cambiar el consentimiento no modifica el CTA, no muestra validación y no bloquea la navegación.
+- [x] Pulsar `Activar mi cuenta` desde `/activate-account` navega a `/` independientemente de los campos y del consentimiento.
+- [x] Pulsar `Iniciar sesión` desde `/activate-account` navega a `/login`.
+- [x] `AuthBrand` renderiza las variantes `hero`, `compact` y `activation` sin duplicar el SVG solar en las páginas.
+- [x] Todos los campos de ambas rutas se renderizan mediante `AuthField` y respetan el contrato y las variantes definidos en esta spec.
+- [x] Por debajo de 768 px el panel promocional del login no se renderiza visualmente y el formulario muestra antes del título el icono coral junto al nombre OpenDayCare.
+- [x] A 390 y 767 px ambas rutas usan una sola columna, respetan los insets de zona segura, permiten scroll vertical y no producen desbordamiento horizontal.
+- [x] A 768 px el login adopta la composición de dos columnas y deja de mostrar la marca compacta móvil sin saltos ni scroll horizontal.
+- [x] Desde 768 px la activación conserva su contenido centrado con un ancho máximo de 440 px.
+- [x] Las dos rutas conservan foco visible y orden de tabulación coherente para inputs, checkbox, botones y enlaces.
+- [x] Ninguno de los cuatro archivos nuevos contiene `"use client"`, hooks, efectos, handlers de estado o inputs controlados.
+- [x] Las páginas no consultan una API, no escriben cookies o almacenamiento y no crean una sesión.
+- [x] Entrar a `/login` o `/activate-account` no redirige automáticamente ni protege `/`, `/kids` o sus perfiles.
+- [x] El sidebar, el drawer móvil y el control Cerrar sesión permanecen sin cambios y Cerrar sesión continúa inerte.
+- [x] `app/layout.tsx`, `app/globals.css`, el feed, las rutas de niños y los componentes de navegación permanecen sin cambios.
+- [x] No se incorporan dependencias, assets, primitivas genéricas, rutas adicionales ni infraestructura de pruebas automatizadas.
+- [x] La consola del navegador no muestra errores al cargar, editar campos, alternar el checkbox o navegar entre las rutas acordadas.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
