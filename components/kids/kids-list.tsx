@@ -2,9 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { AddKidDialog, type NewKidDraft } from "@/components/kids/add-kid-dialog";
+import { AddKidDialog, deriveEphemeralKid, type NewKidDraft } from "@/components/kids/add-kid-dialog";
 import { KidCard, type KidSummary } from "@/components/kids/kid-card";
-import { deriveEphemeralKid } from "@/components/kids/add-kid-dialog";
 
 export type KidsListProps = {
   roomName: string;
