@@ -23,7 +23,7 @@ export function KidsList({ roomName, kids }: KidsListProps) {
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [ephemeralKids, setEphemeralKids] = useState<KidSummary[]>([]);
-  const [nextId, setNextId] = useState(-1);
+  const nextIdRef = useRef(-1);
   const addButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -39,12 +39,10 @@ export function KidsList({ roomName, kids }: KidsListProps) {
   }, [query]);
 
   const handleAddKid = useCallback((draft: NewKidDraft) => {
-    setNextId((prev) => {
-      const id = prev;
-      const newKid = deriveEphemeralKid(draft, id);
-      setEphemeralKids((prevKids) => [...prevKids, newKid]);
-      return prev - 1;
-    });
+    const id = nextIdRef.current;
+    nextIdRef.current = id - 1;
+    const newKid = deriveEphemeralKid(draft, id);
+    setEphemeralKids((prevKids) => [...prevKids, newKid]);
   }, []);
 
   const handleCloseDialog = useCallback(() => {

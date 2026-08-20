@@ -298,7 +298,7 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
             </p>
           )}
 
-          <div className="mb-[18px] flex flex-col gap-[14px] md:flex-row">
+          <div className="mb-[18px] flex flex-col gap-[14px] min-[768px]:flex-row">
             <div className="flex-1">
               <label
                 htmlFor="birthDate"
