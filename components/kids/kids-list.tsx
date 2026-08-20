@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+import { AddKidDialog, type NewKidDraft } from "@/components/kids/add-kid-dialog";
 import { KidCard, type KidSummary } from "@/components/kids/kid-card";
+import { deriveEphemeralKid } from "@/components/kids/add-kid-dialog";
 
 export type KidsListProps = {
   roomName: string;
@@ -20,6 +22,10 @@ function normalizeText(value: string) {
 export function KidsList({ roomName, kids }: KidsListProps) {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [ephemeralKids, setEphemeralKids] = useState<KidSummary[]>([]);
+  const [nextId, setNextId] = useState(-1);
+  const addButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (query.trim() === "") {
@@ -33,10 +39,26 @@ export function KidsList({ roomName, kids }: KidsListProps) {
     return () => window.clearTimeout(timeoutId);
   }, [query]);
 
+  const handleAddKid = useCallback((draft: NewKidDraft) => {
+    setNextId((prev) => {
+      const id = prev;
+      const newKid = deriveEphemeralKid(draft, id);
+      setEphemeralKids((prevKids) => [...prevKids, newKid]);
+      return prev - 1;
+    });
+  }, []);
+
+  const handleCloseDialog = useCallback(() => {
+    setIsDialogOpen(false);
+    addButtonRef.current?.focus();
+  }, []);
+
+  const allKids = [...kids, ...ephemeralKids];
+
   const normalizedQuery = normalizeText(debouncedQuery);
   const visibleKids = normalizedQuery
-    ? kids.filter((kid) => normalizeText(kid.name).includes(normalizedQuery))
-    : kids;
+    ? allKids.filter((kid) => normalizeText(kid.name).includes(normalizedQuery))
+    : allKids;
 
   return (
     <section>
@@ -51,7 +73,9 @@ export function KidsList({ roomName, kids }: KidsListProps) {
         </div>
 
         <button
+          ref={addButtonRef}
           type="button"
+          onClick={() => setIsDialogOpen(true)}
           className="flex items-center gap-2 rounded-[14px] bg-[linear-gradient(180deg,#F4977E,#EE8164)] px-[18px] py-[11px] text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.7)]"
         >
           <svg
@@ -130,10 +154,20 @@ export function KidsList({ roomName, kids }: KidsListProps) {
       ) : (
         <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
           {visibleKids.map((kid) => (
-            <KidCard key={kid.id} kid={kid} href={`/kids/${kid.id}`} />
+            <KidCard
+              key={kid.id}
+              kid={kid}
+              href={kid.id > 0 ? `/kids/${kid.id}` : undefined}
+            />
           ))}
         </div>
       )}
+
+      <AddKidDialog
+        isOpen={isDialogOpen}
+        onClose={handleCloseDialog}
+        onAddKid={handleAddKid}
+      />
     </section>
   );
 }

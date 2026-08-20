@@ -21,8 +21,6 @@ export type AddKidDialogProps = {
 
 const AVATAR_TONES = ["sky", "pink", "green", "yellow", "purple"] as const;
 
-type AvatarTone = (typeof AVATAR_TONES)[number];
-
 type FieldErrors = {
   fullName?: string;
   birthDate?: string;
@@ -58,7 +56,7 @@ function calculateAgeLabel(birthDate: string): string {
   return `${months} ${months === 1 ? "mes" : "meses"}`;
 }
 
-function deriveEphemeralKid(draft: NewKidDraft, nextId: number) {
+export function deriveEphemeralKid(draft: NewKidDraft, nextId: number) {
   const fullName = draft.fullName.trim();
   const initial = fullName.charAt(0).toUpperCase();
   const ageLabel = calculateAgeLabel(draft.birthDate);
@@ -127,6 +125,12 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
     };
   }, [isOpen]);
 
+  const handleClose = useCallback(() => {
+    setForm(emptyForm());
+    setErrors({});
+    onClose();
+  }, [onClose]);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (!isOpen) return;
@@ -162,7 +166,7 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
         }
       }
     },
-    [isOpen]
+    [isOpen, handleClose]
   );
 
   useEffect(() => {
@@ -171,12 +175,6 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
       return () => document.removeEventListener("keydown", handleKeyDown);
     }
   }, [isOpen, handleKeyDown]);
-
-  const handleClose = useCallback(() => {
-    setForm(emptyForm());
-    setErrors({});
-    onClose();
-  }, [onClose]);
 
   const handleOverlayClick = useCallback(
     (e: React.MouseEvent) => {
