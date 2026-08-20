@@ -130,7 +130,7 @@ export function KidsList({ roomName, kids }: KidsListProps) {
       ) : (
         <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
           {visibleKids.map((kid) => (
-            <KidCard key={kid.id} kid={kid} />
+            <KidCard key={kid.id} kid={kid} href={`/kids/${kid.id}`} />
           ))}
         </div>
       )}
