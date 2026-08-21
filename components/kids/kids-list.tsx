@@ -47,8 +47,16 @@ export function KidsList({ roomName, kids }: KidsListProps) {
 
   const handleCloseDialog = useCallback(() => {
     setIsDialogOpen(false);
-    addButtonRef.current?.focus();
   }, []);
+
+  const wasDialogOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (wasDialogOpenRef.current && !isDialogOpen) {
+      addButtonRef.current?.focus();
+    }
+    wasDialogOpenRef.current = isDialogOpen;
+  }, [isDialogOpen]);
 
   const allKids = [...kids, ...ephemeralKids];
 

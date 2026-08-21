@@ -30,27 +30,18 @@ type FieldErrors = {
 function calculateAgeLabel(birthDate: string): string {
   const today = new Date();
   const birth = new Date(birthDate + "T00:00:00");
-  let years = today.getFullYear() - birth.getFullYear();
-  const monthDiff = today.getMonth() - birth.getMonth();
-  const dayDiff = today.getDate() - birth.getDate();
 
-  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-    years--;
-  }
+  let months =
+    (today.getFullYear() - birth.getFullYear()) * 12 +
+    (today.getMonth() - birth.getMonth());
 
-  if (years >= 1) {
-    return `${years} ${years === 1 ? "año" : "años"}`;
-  }
-
-  let months = monthDiff;
-  if (months < 0) {
-    months += 12;
-  }
-  if (dayDiff < 0) {
+  if (today.getDate() < birth.getDate()) {
     months--;
   }
-  if (months < 1) {
-    months = 0;
+
+  if (months >= 12) {
+    const years = Math.floor(months / 12);
+    return `${years} ${years === 1 ? "año" : "años"}`;
   }
 
   return `${months} ${months === 1 ? "mes" : "meses"}`;
@@ -61,7 +52,7 @@ export function deriveEphemeralKid(draft: NewKidDraft, nextId: number) {
   const initial = fullName.charAt(0).toUpperCase();
   const ageLabel = calculateAgeLabel(draft.birthDate);
   const avatarTone =
-    AVATAR_TONES[Math.abs(nextId - 1) % AVATAR_TONES.length];
+    AVATAR_TONES[Math.abs(nextId + 1) % AVATAR_TONES.length];
 
   const allergies = draft.allergies.trim();
   const badge = allergies
@@ -250,7 +241,7 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
     >
       <div
         data-dialog-panel
-        className="w-full max-w-[520px] rounded-[24px] border border-[#ECE0D0] bg-[#FBF4EC] shadow-[0_20px_50px_-24px_rgba(63,54,46,0.35)]"
+        className="w-full max-w-[520px] max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-[24px] border border-[#ECE0D0] bg-[#FBF4EC] shadow-[0_20px_50px_-24px_rgba(63,54,46,0.35)]"
       >
         <header className="flex items-center justify-between border-b border-[#ECE0D0] px-[26px] py-5">
           <button
@@ -260,7 +251,7 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
           >
             Cancelar
           </button>
-          <h2 className="font-display text-lg font-semibold text-[#3F362E]">
+          <h2 className="font-display text-lg leading-[normal] font-semibold text-[#3F362E]">
             Agregar niño
           </h2>
           <button
@@ -372,8 +363,7 @@ export function AddKidDialog({ isOpen, onClose, onAddKid }: AddKidDialogProps) {
             placeholder="Indicaciones, medicación, contactos…"
             value={form.medicalNotes}
             onChange={(e) => handleChange("medicalNotes", e.currentTarget.value)}
-            rows={3}
-            className="block min-h-[90px] w-full resize-y rounded-[14px] border-[1.5px] border-[#EADFD0] bg-[#fff] px-4 py-[13px] text-[15px] leading-relaxed text-[#3F362E]"
+            className="block min-h-[90px] w-full resize-y rounded-[14px] border-[1.5px] border-[#EADFD0] bg-[#fff] px-4 py-[13px] text-[15px] leading-[1.5] text-[#3F362E]"
           />
         </form>
       </div>
