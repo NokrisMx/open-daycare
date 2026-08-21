@@ -111,30 +111,30 @@ El filtrado y el contador de SPEC 06 operarán sobre la colección combinada `[.
 
 ## Criterios de aceptación
 
-- [ ] El botón Agregar niño de `/kids` abre el diálogo; Cancelar, Escape y el overlay cierran sin añadir tarjetas, sin cambiar la URL y sin solicitudes de red.
-- [ ] Al abrirse, el foco pasa al campo Nombre completo y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll de la página se bloquea hasta cerrarlo.
-- [ ] Al cerrarse por cualquier vía, el foco vuelve al botón Agregar niño y el scroll se restaura.
-- [ ] Pulsar Guardar con los tres obligatorios vacíos muestra los tres mensajes de error, no cierra el diálogo y el foco pasa al primer campo inválido.
-- [ ] Los mensajes muestran literalmente `Ingresa el nombre completo.`, `Ingresa la fecha de nacimiento.` y `Selecciona una sala.` en coral `#D9583C`.
-- [ ] Escribir el nombre, elegir fecha o seleccionar sala elimina el error de ese campo tras un intento fallido.
-- [ ] Pulsar Enter en cualquier campo intenta guardar con el mismo comportamiento que Guardar, sin recargar la página.
-- [ ] Guardar con datos válidos cierra el diálogo, añade una tarjeta al final de la cuadrícula y el contador pasa a `9 niños`.
-- [ ] La tarjeta efímera muestra el nombre escrito, su inicial, la edad calculada, `sin padres vinculados`, un avatar rotativo y el badge de la primera alergia en mayúsculas o `VINCULAR` si no hay alergias.
-- [ ] La tarjeta efímera no navega al pulsarla ni muestra el chevron de enlace cuando tiene badge; sin badge y sin enlace no navega.
-- [ ] La búsqueda por nombre filtra la tarjeta efímera como a cualquier otra y el contador refleja el resultado.
-- [ ] Recargar `/kids` restaura exactamente las ocho tarjetas originales y el contador `8 niños`.
-- [ ] Reabrir el diálogo tras cerrarlo muestra el formulario vacío, la sala en su opción vacía y sin errores.
-- [ ] El select Sala ofrece exactamente `Soles`, `Lunas` y `Estrellas` precedidos por la opción vacía `Selecciona una sala`.
-- [ ] La fecha de nacimiento usa `type="date"` nativo y Alergias y Notas médicas son opcionales: su vacío no bloquea el guardado.
-- [ ] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/agregar-nino.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (input date nativo, select con opción vacía, estados de error y overlay de modal) y diferencias de rasterizado.
-- [ ] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal, Fecha de nacimiento y Sala se apilan y la tarjeta se desplaza internamente en viewports bajos.
-- [ ] Las ocho tarjetas originales conservan literalmente sus nombres, edades, badges, estilos y enlaces a `/kids/1`–`/kids/8` tras el cambio de `KidCard`.
-- [ ] La búsqueda, el debounce, el panel sin resultados y el contador de SPEC 06 siguen funcionando sin tarjetas efímeras.
-- [ ] Los únicos archivos de aplicación creados o modificados son `components/kids/add-kid-dialog.tsx`, `components/kids/kids-list.tsx` y `components/kids/kid-card.tsx`.
-- [ ] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
-- [ ] La consola del navegador no muestra errores al abrir, validar, guardar, cancelar, buscar ni recargar.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] El botón Agregar niño de `/kids` abre el diálogo; Cancelar, Escape y el overlay cierran sin añadir tarjetas, sin cambiar la URL y sin solicitudes de red.
+- [x] Al abrirse, el foco pasa al campo Nombre completo y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll de la página se bloquea hasta cerrarlo.
+- [x] Al cerrarse por cualquier vía, el foco vuelve al botón Agregar niño y el scroll se restaura.
+- [x] Pulsar Guardar con los tres obligatorios vacíos muestra los tres mensajes de error, no cierra el diálogo y el foco pasa al primer campo inválido.
+- [x] Los mensajes muestran literalmente `Ingresa el nombre completo.`, `Ingresa la fecha de nacimiento.` y `Selecciona una sala.` en coral `#D9583C`.
+- [x] Escribir el nombre, elegir fecha o seleccionar sala elimina el error de ese campo tras un intento fallido.
+- [x] Pulsar Enter en cualquier campo intenta guardar con el mismo comportamiento que Guardar, sin recargar la página.
+- [x] Guardar con datos válidos cierra el diálogo, añade una tarjeta al final de la cuadrícula y el contador pasa a `9 niños`.
+- [x] La tarjeta efímera muestra el nombre escrito, su inicial, la edad calculada, `sin padres vinculados`, un avatar rotativo y el badge de la primera alergia en mayúsculas o `VINCULAR` si no hay alergias.
+- [x] La tarjeta efímera no navega al pulsarla ni muestra el chevron de enlace cuando tiene badge; sin badge y sin enlace no navega.
+- [x] La búsqueda por nombre filtra la tarjeta efímera como a cualquier otra y el contador refleja el resultado.
+- [x] Recargar `/kids` restaura exactamente las ocho tarjetas originales y el contador `8 niños`.
+- [x] Reabrir el diálogo tras cerrarlo muestra el formulario vacío, la sala en su opción vacía y sin errores.
+- [x] El select Sala ofrece exactamente `Soles`, `Lunas` y `Estrellas` precedidos por la opción vacía `Selecciona una sala`.
+- [x] La fecha de nacimiento usa `type="date"` nativo y Alergias y Notas médicas son opcionales: su vacío no bloquea el guardado.
+- [x] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/agregar-nino.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (input date nativo, select con opción vacía, estados de error y overlay de modal) y diferencias de rasterizado.
+- [x] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal, Fecha de nacimiento y Sala se apilan y la tarjeta se desplaza internamente en viewports bajos.
+- [x] Las ocho tarjetas originales conservan literalmente sus nombres, edades, badges, estilos y enlaces a `/kids/1`–`/kids/8` tras el cambio de `KidCard`.
+- [x] La búsqueda, el debounce, el panel sin resultados y el contador de SPEC 06 siguen funcionando sin tarjetas efímeras.
+- [x] Los únicos archivos de aplicación creados o modificados son `components/kids/add-kid-dialog.tsx`, `components/kids/kids-list.tsx` y `components/kids/kid-card.tsx`.
+- [x] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
+- [x] La consola del navegador no muestra errores al abrir, validar, guardar, cancelar, buscar ni recargar.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
