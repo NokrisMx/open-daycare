@@ -485,7 +485,7 @@ export function NewPostDialog({
               onChange={(event) =>
                 handleDescriptionChange(event.currentTarget.value)
               }
-              className={`block min-h-[120px] w-full resize-y rounded-[14px] border-[1.5px] bg-white px-4 py-3.5 text-[15px] leading-6 text-[#3F362E] placeholder:text-[#B6A99B] ${
+              className={`block min-h-[120px] w-full resize-y rounded-[14px] border-[1.5px] bg-white px-4 py-3.5 text-[15px] leading-[1.5] text-[#3F362E] placeholder:text-[#B6A99B] ${
                 errors.description
                   ? "border-[#D9583C]"
                   : "border-[#EADFD0]"
