@@ -1,7 +1,7 @@
 ---
 description: Verifies, corrects, and checks an approved spec's acceptance criteria; use after implementation, especially for Next.js pages and visual UI work.
 mode: all
-model: opencode-go/glm-5.3
+model: openai/gpt-5.6-sol
 permission:
   read: allow
   edit: allow
