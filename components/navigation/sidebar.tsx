@@ -8,6 +8,7 @@ export type SidebarProps = {
   userRole: string;
   userInitial: string;
   activeItem: SidebarItem;
+  onNewPost?: () => void;
 };
 
 type SidebarContentProps = SidebarProps & {
@@ -68,6 +69,7 @@ export function SidebarContent({
   userRole,
   userInitial,
   activeItem,
+  onNewPost,
   headerAction,
   onNavigate,
 }: SidebarContentProps) {
@@ -105,6 +107,7 @@ export function SidebarContent({
 
       <button
         type="button"
+        onClick={onNewPost}
         className="mb-[18px] flex w-full items-center justify-center gap-2 rounded-[14px] bg-[linear-gradient(180deg,#F4977E,#EE8164)] p-3 text-[14.5px] font-extrabold text-white shadow-[0_8px_18px_-8px_rgba(238,129,100,0.75)]"
       >
         <svg
