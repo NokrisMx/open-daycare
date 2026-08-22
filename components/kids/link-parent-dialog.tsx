@@ -279,6 +279,7 @@ export function LinkParentDialog({
         </header>
 
         <form
+          noValidate
           onSubmit={handleSubmit}
           className="px-[18px] py-[22px] md:px-[26px]"
         >
