@@ -1,6 +1,6 @@
 # SPEC 09 — Diálogo para vincular padre
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 05, SPEC 08
 > **Fecha:** 2026-08-20
 > **Objetivo:** Implementar el diálogo Vincular padre sobre `/kids/[id]` con validación de nombre y email en el cliente y altas efímeras de padres pendientes en memoria, sin backend ni persistencia.
@@ -78,15 +78,15 @@ export type LinkedParentsCardProps = {
 - Mantiene en estado la colección efímera y la apertura del diálogo; renderiza `[...parents, ...ephemeralParents]` en orden.
 - Deriva de cada `NewParentDraft` un `LinkedParent`:
 
-| Campo               | Valor derivado                                                                     |
-| ------------------- | ---------------------------------------------------------------------------------- |
-| `id`                | Contador local descendente desde `-1` (sin colisión con `1`–`9` de los fixtures)   |
-| `name`              | `fullName` sin espacios externos                                                   |
-| `initial`           | Primera letra del nombre en mayúscula                                              |
-| `relationshipLabel` | `Mamá`, `Papá` o `Tutor/a` según la opción activa                                  |
-| `statusLabel`       | `invitación enviada`                                                               |
-| `status`            | `pending` (badge `PENDIENTE`)                                                      |
-| `avatarTone`        | Alternancia determinista `purple`, `blue` por orden de alta                        |
+| Campo               | Valor derivado                                                                   |
+| ------------------- | -------------------------------------------------------------------------------- |
+| `id`                | Contador local descendente desde `-1` (sin colisión con `1`–`9` de los fixtures) |
+| `name`              | `fullName` sin espacios externos                                                 |
+| `initial`           | Primera letra del nombre en mayúscula                                            |
+| `relationshipLabel` | `Mamá`, `Papá` o `Tutor/a` según la opción activa                                |
+| `statusLabel`       | `invitación enviada`                                                             |
+| `status`            | `pending` (badge `PENDIENTE`)                                                    |
+| `avatarTone`        | Alternancia determinista `purple`, `blue` por orden de alta                      |
 
 `components/kids/kid-profile.tsx` sustituirá la sección PADRES VINCULADOS por `<LinkedParentsCard parents={profile.linkedParents} />`, conservando la columna derecha de 300 px y el botón Resumen del día como Server Component. El resto del componente permanece como Server Component y `LinkedParent`/`ParentStatus` siguen definidos en `kid-profile.tsx`.
 
@@ -100,28 +100,28 @@ export type LinkedParentsCardProps = {
 
 ## Criterios de aceptación
 
-- [ ] El botón Vincular otro padre de `/kids/[id]` abre el diálogo; X, Escape y el overlay cierran sin añadir padres, sin cambiar la URL y sin solicitudes de red.
-- [ ] Al abrirse, el foco pasa al campo NOMBRE DEL PADRE/MADRE y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll se bloquea hasta cerrarlo.
-- [ ] Al cerrarse por cualquier vía, el foco vuelve al botón Vincular otro padre y el scroll se restaura.
-- [ ] En `/kids/1` la cabecera muestra literalmente `Vincular padre` y `a Mateo Fernández`, y el banner muestra `Solo verá el feed de Mateo.`
-- [ ] Pulsar Enviar invitación con los campos vacíos muestra `Ingresa el nombre del padre o madre.` y `Ingresa un email válido.`, no cierra el diálogo y el foco pasa al primer campo inválido.
-- [ ] Un email sin formato válido (p. ej. `correo@`) mantiene el error `Ingresa un email válido.`; escribir en cualquier campo elimina su error tras un intento fallido.
-- [ ] Mamá aparece seleccionada al abrir; pulsar Papá o Tutor/a cambia la selección y siempre hay exactamente una opción activa.
-- [ ] La tarjeta de código muestra literalmente `CÓDIGO DE INVITACIÓN`, `7K4P9` y `Vence en 7 días` en todos los niños.
-- [ ] Enviar con datos válidos cierra el diálogo y añade al final de PADRES VINCULADOS un padre con el nombre escrito, su inicial, `{parentesco} · invitación enviada` y badge `PENDIENTE`.
-- [ ] El avatar del padre efímero alterna purple y blue entre altas sucesivas.
-- [ ] Pulsar Enter en cualquier campo intenta enviar con el mismo comportamiento que Enviar invitación, sin recargar la página.
-- [ ] Recargar `/kids/1` restaura exactamente los dos padres de los fixtures; el padre efímero desaparece.
-- [ ] Reabrir el diálogo tras cerrarlo muestra el formulario vacío, parentesco en Mamá y sin errores.
-- [ ] En `/kids/4` (Valentina, sin padres) el botón abre el diálogo y el alta añade el primer padre a una lista inicialmente vacía.
-- [ ] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/vincular-padre.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (overlay de modal, estados de error) y diferencias de rasterizado.
-- [ ] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal y la tarjeta se desplaza internamente en viewports bajos.
-- [ ] Los ocho perfiles conservan sus padres de fixture, notas, datos y estilos tras el cambio de `kid-profile.tsx`.
-- [ ] Los únicos archivos de aplicación creados o modificados son `components/kids/link-parent-dialog.tsx`, `components/kids/linked-parents-card.tsx` y `components/kids/kid-profile.tsx`.
-- [ ] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
-- [ ] La consola del navegador no muestra errores al abrir, validar, enviar, cancelar ni recargar.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] El botón Vincular otro padre de `/kids/[id]` abre el diálogo; X, Escape y el overlay cierran sin añadir padres, sin cambiar la URL y sin solicitudes de red.
+- [x] Al abrirse, el foco pasa al campo NOMBRE DEL PADRE/MADRE y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll se bloquea hasta cerrarlo.
+- [x] Al cerrarse por cualquier vía, el foco vuelve al botón Vincular otro padre y el scroll se restaura.
+- [x] En `/kids/1` la cabecera muestra literalmente `Vincular padre` y `a Mateo Fernández`, y el banner muestra `Solo verá el feed de Mateo.`
+- [x] Pulsar Enviar invitación con los campos vacíos muestra `Ingresa el nombre del padre o madre.` y `Ingresa un email válido.`, no cierra el diálogo y el foco pasa al primer campo inválido.
+- [x] Un email sin formato válido (p. ej. `correo@`) mantiene el error `Ingresa un email válido.`; escribir en cualquier campo elimina su error tras un intento fallido.
+- [x] Mamá aparece seleccionada al abrir; pulsar Papá o Tutor/a cambia la selección y siempre hay exactamente una opción activa.
+- [x] La tarjeta de código muestra literalmente `CÓDIGO DE INVITACIÓN`, `7K4P9` y `Vence en 7 días` en todos los niños.
+- [x] Enviar con datos válidos cierra el diálogo y añade al final de PADRES VINCULADOS un padre con el nombre escrito, su inicial, `{parentesco} · invitación enviada` y badge `PENDIENTE`.
+- [x] El avatar del padre efímero alterna purple y blue entre altas sucesivas.
+- [x] Pulsar Enter en cualquier campo intenta enviar con el mismo comportamiento que Enviar invitación, sin recargar la página.
+- [x] Recargar `/kids/1` restaura exactamente los dos padres de los fixtures; el padre efímero desaparece.
+- [x] Reabrir el diálogo tras cerrarlo muestra el formulario vacío, parentesco en Mamá y sin errores.
+- [x] En `/kids/4` (Valentina, sin padres) el botón abre el diálogo y el alta añade el primer padre a una lista inicialmente vacía.
+- [x] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/vincular-padre.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (overlay de modal, estados de error) y diferencias de rasterizado.
+- [x] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal y la tarjeta se desplaza internamente en viewports bajos.
+- [x] Los ocho perfiles conservan sus padres de fixture, notas, datos y estilos tras el cambio de `kid-profile.tsx`.
+- [x] Los únicos archivos de aplicación creados o modificados son `components/kids/link-parent-dialog.tsx`, `components/kids/linked-parents-card.tsx` y `components/kids/kid-profile.tsx`.
+- [x] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
+- [x] La consola del navegador no muestra errores al abrir, validar, enviar, cancelar ni recargar.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
@@ -147,15 +147,15 @@ export type LinkedParentsCardProps = {
 
 ## Riesgos
 
-| Riesgo                                                                                            | Mitigación                                                                                                        |
-| ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| El portal puede acceder a `document` durante SSR.                                                 | Crear el portal tras el montaje y renderizar el diálogo solo cuando esté abierto.                                 |
-| Marcar `inert` el contenido de la página puede desactivar también el diálogo.                     | Renderizar siempre mediante portal como hermano del árbol de página, nunca dentro de `data-page-content`.         |
-| El cambio de `kid-profile.tsx` puede regresar la presentación de los padres de fixture.           | Mantener la definición de `LinkedParent` en `kid-profile.tsx` y repetir la verificación de los ocho perfiles.     |
-| La comprobación de email puede rechazar direcciones válidas o aceptar inválidas.                  | Usar una comprobación sencilla de formato (texto, `@`, texto, `.` y texto) documentada en el componente.          |
-| El diálogo puede desbordar en viewports móviles bajos con teclado abierto.                        | Limitar la altura máxima de la tarjeta, habilitar scroll interno y conservar los paddings de zona segura.         |
-| El diálogo y el drawer móvil podrían solaparse en profundidad.                                    | Ambos comparten overlay 45 y panel 50; con el drawer abierto el contenido está `inert`, por lo que no coinciden.  |
-| Perder las altas al recargar puede parecer un fallo.                                              | Comportamiento acordado y documentado: la persistencia queda fuera del alcance hasta que exista backend.          |
+| Riesgo                                                                                  | Mitigación                                                                                                       |
+| --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| El portal puede acceder a `document` durante SSR.                                       | Crear el portal tras el montaje y renderizar el diálogo solo cuando esté abierto.                                |
+| Marcar `inert` el contenido de la página puede desactivar también el diálogo.           | Renderizar siempre mediante portal como hermano del árbol de página, nunca dentro de `data-page-content`.        |
+| El cambio de `kid-profile.tsx` puede regresar la presentación de los padres de fixture. | Mantener la definición de `LinkedParent` en `kid-profile.tsx` y repetir la verificación de los ocho perfiles.    |
+| La comprobación de email puede rechazar direcciones válidas o aceptar inválidas.        | Usar una comprobación sencilla de formato (texto, `@`, texto, `.` y texto) documentada en el componente.         |
+| El diálogo puede desbordar en viewports móviles bajos con teclado abierto.              | Limitar la altura máxima de la tarjeta, habilitar scroll interno y conservar los paddings de zona segura.        |
+| El diálogo y el drawer móvil podrían solaparse en profundidad.                          | Ambos comparten overlay 45 y panel 50; con el drawer abierto el contenido está `inert`, por lo que no coinciden. |
+| Perder las altas al recargar puede parecer un fallo.                                    | Comportamiento acordado y documentado: la persistencia queda fuera del alcance hasta que exista backend.         |
 
 ## Lo que **no** incluye esta spec
 
