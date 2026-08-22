@@ -1,6 +1,6 @@
 # SPEC 10 — Diálogo para nueva publicación
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01, SPEC 02, SPEC 03
 > **Fecha:** 2026-08-21
 > **Objetivo:** Implementar el diálogo Nueva publicación sobre `/` abierto desde el botón del sidebar/drawer y el prompt del feed, con destinatarios múltiples, tipo único y alta efímera de publicaciones en el feed, sin backend ni persistencia.
@@ -128,30 +128,30 @@ export type FeedScreenProps = {
 
 ## Criterios de aceptación
 
-- [ ] El botón Nueva publicación del sidebar desktop en `/` abre el diálogo sin navegar ni cambiar la URL.
-- [ ] El botón Nueva publicación del drawer móvil cierra el drawer y abre el diálogo; el foco inicial queda en el primer chip PARA y, al cerrar, vuelve al botón del menú móvil.
-- [ ] El prompt Compartí un momento… abre el diálogo y, al cerrar, el foco vuelve al prompt.
-- [ ] En `/kids` el botón Nueva publicación sigue sin acción y no se renderiza ningún diálogo.
-- [ ] Al abrirse, el foco pasa al primer chip PARA y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll se bloquea hasta cerrarlo.
-- [ ] Cancelar, Escape y el overlay cierran sin publicar, sin solicitudes de red y restablecen el formulario.
-- [ ] Se pueden marcar varios niños a la vez; Toda la sala desmarca todos los niños y activar un niño desmarca Toda la sala.
-- [ ] Exactamente un tipo puede estar activo, se distingue visualmente de los inactivos y pulsarlo de nuevo lo desmarca.
-- [ ] Publicar con todo vacío muestra literalmente `Selecciona al menos un destinatario.`, `Selecciona un tipo de publicación.` e `Ingresa una descripción.` en coral `#D9583C`, no cierra el diálogo y el foco pasa a la primera sección inválida.
-- [ ] Marcar un destinatario, elegir un tipo o escribir en la descripción elimina el error de esa sección tras un intento fallido.
-- [ ] Agregar añade mosaicos de foto y pulsar un mosaico lo quita; al cerrar la sección vuelve a mostrar solo Agregar.
-- [ ] Publicar con un único niño añade una tarjeta con su nombre e inicial, `Para: familia de {nombre}`, la hora actual en HH:MM, `publicado por vos` y 0 reacciones y comentarios.
-- [ ] Publicar con varios niños muestra `Varios niños` con inicial `V` y `Para: familias de {a, b y c}`.
-- [ ] Publicar con Toda la sala muestra `Sala Soles`/`S` y `Para: toda la sala`; con tipo Anuncio muestra el título `Anuncio general` y badge ANUNCIO.
-- [ ] Los tipos Foto y Actividad muestran el placeholder `Fotos de la publicación`; Comida, Siesta, Logro y Ánimo se muestran con badge LOGRO.
-- [ ] Reabrir el diálogo tras cerrarlo muestra el formulario en su estado inicial sin errores.
-- [ ] Recargar `/` restaura exactamente las tres publicaciones del fixture.
-- [ ] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/crear-publicacion.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (overlay de modal, estados de error, chips sin preselección, distinción de tipo por opacidad y estado inicial de FOTOS) y diferencias de rasterizado.
-- [ ] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal y la tarjeta se desplaza internamente en viewports bajos.
-- [ ] Los únicos archivos de aplicación creados o modificados son `components/feed/new-post-dialog.tsx`, `components/feed/feed-screen.tsx`, `components/feed/composer-prompt.tsx`, `components/navigation/sidebar.tsx`, `components/navigation/mobile-navigation.tsx` y `app/page.tsx`.
-- [ ] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
-- [ ] La consola del navegador no muestra errores al abrir, validar, publicar, cancelar ni recargar.
-- [ ] `npm run lint -- app` finaliza correctamente.
-- [ ] `npm run build` finaliza correctamente.
+- [x] El botón Nueva publicación del sidebar desktop en `/` abre el diálogo sin navegar ni cambiar la URL.
+- [x] El botón Nueva publicación del drawer móvil cierra el drawer y abre el diálogo; el foco inicial queda en el primer chip PARA y, al cerrar, vuelve al botón del menú móvil.
+- [x] El prompt Compartí un momento… abre el diálogo y, al cerrar, el foco vuelve al prompt.
+- [x] En `/kids` el botón Nueva publicación sigue sin acción y no se renderiza ningún diálogo.
+- [x] Al abrirse, el foco pasa al primer chip PARA y el Tab permanece dentro del diálogo; el fondo queda `inert` y `aria-hidden`, y el scroll se bloquea hasta cerrarlo.
+- [x] Cancelar, Escape y el overlay cierran sin publicar, sin solicitudes de red y restablecen el formulario.
+- [x] Se pueden marcar varios niños a la vez; Toda la sala desmarca todos los niños y activar un niño desmarca Toda la sala.
+- [x] Exactamente un tipo puede estar activo, se distingue visualmente de los inactivos y pulsarlo de nuevo lo desmarca.
+- [x] Publicar con todo vacío muestra literalmente `Selecciona al menos un destinatario.`, `Selecciona un tipo de publicación.` e `Ingresa una descripción.` en coral `#D9583C`, no cierra el diálogo y el foco pasa a la primera sección inválida.
+- [x] Marcar un destinatario, elegir un tipo o escribir en la descripción elimina el error de esa sección tras un intento fallido.
+- [x] Agregar añade mosaicos de foto y pulsar un mosaico lo quita; al cerrar la sección vuelve a mostrar solo Agregar.
+- [x] Publicar con un único niño añade una tarjeta con su nombre e inicial, `Para: familia de {nombre}`, la hora actual en HH:MM, `publicado por vos` y 0 reacciones y comentarios.
+- [x] Publicar con varios niños muestra `Varios niños` con inicial `V` y `Para: familias de {a, b y c}`.
+- [x] Publicar con Toda la sala muestra `Sala Soles`/`S` y `Para: toda la sala`; con tipo Anuncio muestra el título `Anuncio general` y badge ANUNCIO.
+- [x] Los tipos Foto y Actividad muestran el placeholder `Fotos de la publicación`; Comida, Siesta, Logro y Ánimo se muestran con badge LOGRO.
+- [x] Reabrir el diálogo tras cerrarlo muestra el formulario en su estado inicial sin errores.
+- [x] Recargar `/` restaura exactamente las tres publicaciones del fixture.
+- [x] A 1200 × 800 la tarjeta del diálogo coincide con `references/pantallas/crear-publicacion.dc.html` en estructura, tipografías, colores, medidas, espaciados, bordes, sombras y radios; solo se admiten las adaptaciones acordadas (overlay de modal, estados de error, chips sin preselección, distinción de tipo por opacidad y estado inicial de FOTOS) y diferencias de rasterizado.
+- [x] Por debajo de 768 px el diálogo ocupa el ancho disponible sin desbordamiento horizontal y la tarjeta se desplaza internamente en viewports bajos.
+- [x] Los únicos archivos de aplicación creados o modificados son `components/feed/new-post-dialog.tsx`, `components/feed/feed-screen.tsx`, `components/feed/composer-prompt.tsx`, `components/navigation/sidebar.tsx`, `components/navigation/mobile-navigation.tsx` y `app/page.tsx`.
+- [x] Ningún valor se envía a una URL, se escribe en almacenamiento del navegador ni genera solicitudes de red.
+- [x] La consola del navegador no muestra errores al abrir, validar, publicar, cancelar ni recargar.
+- [x] `npm run lint -- app` finaliza correctamente.
+- [x] `npm run build` finaliza correctamente.
 
 ## Decisiones
 
