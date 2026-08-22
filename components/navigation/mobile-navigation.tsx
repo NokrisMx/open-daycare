@@ -212,6 +212,14 @@ export function MobileNavigation(props: MobileNavigationProps) {
         <SidebarContent
           {...props}
           onNavigate={() => setIsOpen(false)}
+          onNewPost={
+            props.onNewPost
+              ? () => {
+                  setIsOpen(false);
+                  props.onNewPost?.();
+                }
+              : undefined
+          }
           headerAction={
             <button
               ref={closeButtonRef}

@@ -1,15 +1,18 @@
 type ComposerPromptProps = {
   authorInitial: string;
   placeholder: string;
+  onClick?: () => void;
 };
 
 export function ComposerPrompt({
   authorInitial,
   placeholder,
+  onClick,
 }: ComposerPromptProps) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="mb-6 flex w-full items-center gap-3.5 rounded-[18px] border border-[#ECE0D0] bg-[#FFFDF9] px-3.5 py-3.5 text-left shadow-[0_4px_14px_-10px_rgba(120,90,60,0.4)] md:px-[18px]"
     >
       <span className="font-display flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F2937A] text-[16px] font-semibold text-white">
