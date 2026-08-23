@@ -1,6 +1,6 @@
 # SPEC 11 — Fundación de base de datos para guarderías
 
-> **Estado:** Aprobado
+> **Estado:** Implemetado
 > **Depende de:** Ninguna
 > **Fecha:** 2026-08-23
 > **Objetivo:** Establecer el flujo local de migraciones imperativas y crear en el proyecto Supabase conectado la tabla raíz `public.daycares`, protegida y sembrada con Guardería Sala Soles.
@@ -98,31 +98,31 @@ El historial local recuperará estas dos versiones ya aplicadas en remoto:
 
 ## Criterios de aceptación
 
-- [ ] `package.json` contiene `supabase` en `devDependencies` con una versión exacta, sin `^` ni `~`, y `package-lock.json` queda actualizado.
-- [ ] `supabase/config.toml` existe, es seguro para versionarse y no contiene tokens, contraseñas ni claves privadas.
-- [ ] `supabase/.gitignore` excluye `.temp/` y `.branches/`, y ningún estado de vínculo o credencial queda versionado.
-- [ ] El repositorio usa migraciones imperativas bajo `supabase/migrations/` y no existe `supabase/schemas/`.
-- [ ] `supabase/migrations/20260823184446_create_connection_test_table.sql` y `supabase/migrations/20260823184754_drop_connection_test_table.sql` fueron recuperados desde el historial remoto sin reparar ni eliminar sus entradas.
-- [ ] Antes del nuevo push, `npx supabase migration list --linked` muestra alineadas local y remotamente las dos migraciones históricas.
-- [ ] Existe exactamente una migración nueva cuyo nombre termina en `_create_daycares.sql`.
-- [ ] `npx supabase db reset --local` reconstruye correctamente la base local aplicando las tres migraciones en orden.
-- [ ] `public.connection_test` no existe después del reset local ni en el proyecto remoto.
-- [ ] `public.daycares` existe en local y remoto con exactamente las columnas `id uuid`, `name text` y `created_at timestamptz`.
-- [ ] `id` es la clave primaria, no admite nulos y usa `gen_random_uuid()` por defecto.
-- [ ] `name` no admite nulos y la restricción `daycares_name_not_blank` rechaza valores vacíos o compuestos solo por espacios.
-- [ ] `created_at` no admite nulos y usa `now()` por defecto.
-- [ ] Existe exactamente una fila con `id = '00000000-0000-0000-0000-000000000001'` y `name = 'Guardería Sala Soles'` en local y remoto.
-- [ ] RLS está habilitado explícitamente en `public.daycares` tanto en local como en remoto.
-- [ ] `public.daycares` no tiene políticas RLS.
-- [ ] Los roles `anon` y `authenticated` no tienen privilegios `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES` ni `TRIGGER` sobre `public.daycares`.
-- [ ] `npx supabase db push --linked --dry-run` identifica solo la migración `create_daycares` como pendiente antes de aplicarla.
-- [ ] `npx supabase db push --linked` finaliza correctamente sin resetear el proyecto remoto ni incluir un archivo de seed.
-- [ ] Después del push, `npx supabase migration list --linked` muestra alineadas local y remotamente las tres versiones.
-- [ ] El asesor de rendimiento no reporta hallazgos nuevos causados por `public.daycares`.
-- [ ] El asesor de seguridad no añade WARN ni ERROR por `public.daycares`; se acepta el INFO esperado `rls_enabled_no_policy` porque el bloqueo sin políticas es intencional.
-- [ ] Los dos WARN preexistentes sobre `public.rls_auto_enable()` permanecen como baseline y no se modifican en esta spec.
-- [ ] No se modifican archivos de `app/`, `components/`, referencias visuales ni fixtures.
-- [ ] No se instalan SDKs de Supabase ni se generan tipos TypeScript.
+- [x] `package.json` contiene `supabase` en `devDependencies` con una versión exacta, sin `^` ni `~`, y `package-lock.json` queda actualizado.
+- [x] `supabase/config.toml` existe, es seguro para versionarse y no contiene tokens, contraseñas ni claves privadas.
+- [x] `supabase/.gitignore` excluye `.temp/` y `.branches/`, y ningún estado de vínculo o credencial queda versionado.
+- [x] El repositorio usa migraciones imperativas bajo `supabase/migrations/` y no existe `supabase/schemas/`.
+- [x] `supabase/migrations/20260823184446_create_connection_test_table.sql` y `supabase/migrations/20260823184754_drop_connection_test_table.sql` fueron recuperados desde el historial remoto sin reparar ni eliminar sus entradas.
+- [x] Antes del nuevo push, `npx supabase migration list --linked` muestra alineadas local y remotamente las dos migraciones históricas.
+- [x] Existe exactamente una migración nueva cuyo nombre termina en `_create_daycares.sql`.
+- [x] `npx supabase db reset --local` reconstruye correctamente la base local aplicando las tres migraciones en orden.
+- [x] `public.connection_test` no existe después del reset local ni en el proyecto remoto.
+- [x] `public.daycares` existe en local y remoto con exactamente las columnas `id uuid`, `name text` y `created_at timestamptz`.
+- [x] `id` es la clave primaria, no admite nulos y usa `gen_random_uuid()` por defecto.
+- [x] `name` no admite nulos y la restricción `daycares_name_not_blank` rechaza valores vacíos o compuestos solo por espacios.
+- [x] `created_at` no admite nulos y usa `now()` por defecto.
+- [x] Existe exactamente una fila con `id = '00000000-0000-0000-0000-000000000001'` y `name = 'Guardería Sala Soles'` en local y remoto.
+- [x] RLS está habilitado explícitamente en `public.daycares` tanto en local como en remoto.
+- [x] `public.daycares` no tiene políticas RLS.
+- [x] Los roles `anon` y `authenticated` no tienen privilegios `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES` ni `TRIGGER` sobre `public.daycares`.
+- [x] `npx supabase db push --linked --dry-run` identifica solo la migración `create_daycares` como pendiente antes de aplicarla.
+- [x] `npx supabase db push --linked` finaliza correctamente sin resetear el proyecto remoto ni incluir un archivo de seed.
+- [x] Después del push, `npx supabase migration list --linked` muestra alineadas local y remotamente las tres versiones.
+- [x] El asesor de rendimiento no reporta hallazgos nuevos causados por `public.daycares`.
+- [x] El asesor de seguridad no añade WARN ni ERROR por `public.daycares`; se acepta el INFO esperado `rls_enabled_no_policy` porque el bloqueo sin políticas es intencional.
+- [x] Los dos WARN preexistentes sobre `public.rls_auto_enable()` permanecen como baseline y no se modifican en esta spec.
+- [x] No se modifican archivos de `app/`, `components/`, referencias visuales ni fixtures.
+- [x] No se instalan SDKs de Supabase ni se generan tipos TypeScript.
 
 ## Decisiones
 
