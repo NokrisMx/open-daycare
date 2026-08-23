@@ -1,6 +1,6 @@
 # SPEC 12 — Actualización del catálogo de guarderías
 
-> **Estado:** Borrador
+> **Estado:** Aprobado
 > **Depende de:** SPEC 11
 > **Fecha:** 2026-08-23
 > **Objetivo:** Aplicar mediante una nueva migración imperativa los cambios de estructura, políticas y datos del catálogo `public.daycares` sin alterar el historial ya ejecutado en Supabase.
@@ -57,21 +57,21 @@ El estado final de `public.daycares` será:
 
 El catálogo final contendrá exactamente:
 
-| Nombre                   | Dirección                              |
-| ------------------------ | -------------------------------------- |
-| `Guardería Sala Soles`   | `Av. Principal 123, Centro`            |
-| `Guardería Arcoíris`     | `Calle Luna 456, Zona Norte`           |
-| `Guardería Semillitas`   | `Blvd. del Sol 789, Col. Jardines`     |
-| `Guardería Estrellitas`  | `Paseo de los Niños 321, Residencial`  |
+| Nombre                  | Dirección                             |
+| ----------------------- | ------------------------------------- |
+| `Guardería Sala Soles`  | `Av. Principal 123, Centro`           |
+| `Guardería Arcoíris`    | `Calle Luna 456, Zona Norte`          |
+| `Guardería Semillitas`  | `Blvd. del Sol 789, Col. Jardines`    |
+| `Guardería Estrellitas` | `Paseo de los Niños 321, Residencial` |
 
 Las políticas finales serán:
 
-| Política           | Operación | `USING` | `WITH CHECK` |
-| ------------------ | --------- | ------- | ------------ |
-| `daycares_read`    | `SELECT`  | `true`  | No aplica    |
-| `daycares_insert`  | `INSERT`  | No aplica| `false`      |
-| `daycares_update`  | `UPDATE`  | `false` | Implícito    |
-| `daycares_delete`  | `DELETE`  | `false` | No aplica    |
+| Política          | Operación | `USING`   | `WITH CHECK` |
+| ----------------- | --------- | --------- | ------------ |
+| `daycares_read`   | `SELECT`  | `true`    | No aplica    |
+| `daycares_insert` | `INSERT`  | No aplica | `false`      |
+| `daycares_update` | `UPDATE`  | `false`   | Implícito    |
+| `daycares_delete` | `DELETE`  | `false`   | No aplica    |
 
 La política `daycares_read` expresa lectura sin filtro de filas, pero no vuelve pública la tabla por sí sola. Los roles `anon` y `authenticated` seguirán sin poder leerla porque no recibirán privilegio `SELECT`.
 
@@ -124,14 +124,14 @@ La política `daycares_read` expresa lectura sin filtro de filas, pero no vuelve
 
 ## Riesgos
 
-| Riesgo | Mitigación |
-| ------ | ---------- |
-| Editar una migración ya aplicada deja el historial local divergente. | Restaurar el archivo histórico y mover todo el delta a una versión nueva. |
+| Riesgo                                                                               | Mitigación                                                                                                                           |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Editar una migración ya aplicada deja el historial local divergente.                 | Restaurar el archivo histórico y mover todo el delta a una versión nueva.                                                            |
 | El reemplazo de filas elimina el UUID fijo y cualquier dato agregado fuera del seed. | Verificar antes de aplicar que la tabla conserva únicamente la fila conocida y abortar si aparecen datos o dependencias inesperadas. |
-| Futuras claves foráneas podrían impedir el borrado o quedar rotas. | Inspeccionar dependencias antes de aplicar; el estado actual no contiene otras tablas de dominio. |
-| `daycares_read` puede interpretarse erróneamente como acceso público efectivo. | Verificar por separado políticas y privilegios; mantener revocados los permisos de cliente. |
-| `updated_at` puede quedar obsoleto después de un cambio. | Documentar que las operaciones futuras deben asignarlo explícitamente o aprobar otra spec para automatizarlo. |
-| Permitir nombres vacíos reduce la integridad del dominio. | Registrar la decisión explícita y limitar esta spec al contrato solicitado. |
+| Futuras claves foráneas podrían impedir el borrado o quedar rotas.                   | Inspeccionar dependencias antes de aplicar; el estado actual no contiene otras tablas de dominio.                                    |
+| `daycares_read` puede interpretarse erróneamente como acceso público efectivo.       | Verificar por separado políticas y privilegios; mantener revocados los permisos de cliente.                                          |
+| `updated_at` puede quedar obsoleto después de un cambio.                             | Documentar que las operaciones futuras deben asignarlo explícitamente o aprobar otra spec para automatizarlo.                        |
+| Permitir nombres vacíos reduce la integridad del dominio.                            | Registrar la decisión explícita y limitar esta spec al contrato solicitado.                                                          |
 
 ## Lo que **no** incluye esta spec
 
