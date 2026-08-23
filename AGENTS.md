@@ -30,6 +30,23 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Keep screenshots and all Playwright artifacts under `.playwright-mcp/`; the directory contents are gitignored.
 - Use Context7 for current framework documentation; for installed Next.js behavior, prefer the version-matched local guides required above.
 
+## Supabase
+
+- Load the `supabase` skill for every task involving Supabase Database, Auth, Storage, Realtime, Edge Functions, client/SSR integration, CLI, MCP, logs, or troubleshooting.
+- Before writing or changing SQL, schemas, migrations, RLS policies, indexes, triggers, functions, queues, or other Postgres resources, also load `supabase-postgres-best-practices` and follow its relevant rule files.
+- Treat the `docs` reference (`../07-DB-Schema`) as the intended database design only. Inspect the live database before changing it; the reference is not proof that a table, column, relationship, policy, or migration has already been implemented.
+- Check current Supabase documentation before implementation. Prefer the Supabase MCP `search_docs` tool, then official documentation pages; check the changelog for relevant breaking changes.
+- Prefer local Supabase CLI development and testing when a local stack is configured. Use MCP tools for the connected project; use `apply_migration` for DDL and `execute_sql` only for non-DDL queries or documented local iteration workflows.
+- Before a schema change, inspect existing tables and determine whether the project uses declarative schemas (`supabase/schemas/` or `schema_paths`) or imperative migrations. Do not mix the workflows.
+- Enable RLS on every table in an exposed schema and create least-privilege policies for the actual ownership or tenancy model. Never expose `service_role` or secret keys to client code; use publishable keys in the frontend.
+- After database changes, verify behavior with a query or focused test and run Supabase security and performance advisors. Do not consider a database change complete without verification.
+- Discover installed Supabase CLI commands and flags with `supabase --help` and command-specific `--help`; do not rely on remembered CLI syntax.
+
+## Installed Skills
+
+- `supabase` (`.agents/skills/supabase/SKILL.md`): mandatory workflow, security checklist, current documentation, CLI/MCP usage, migrations, and troubleshooting for all Supabase work.
+- `supabase-postgres-best-practices` (`.agents/skills/supabase-postgres-best-practices/SKILL.md`): mandatory companion for Postgres schema, SQL, RLS, migrations, performance, connections, locking, monitoring, and advanced database features.
+
 ## Spec Driven Development
 
 - `/spec` usa la skill de especificaciones para crear y aprobar una spec antes de implementar.
