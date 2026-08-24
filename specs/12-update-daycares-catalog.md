@@ -86,23 +86,23 @@ La política `daycares_read` expresa lectura sin filtro de filas, pero no vuelve
 
 ## Criterios de aceptación
 
-- [ ] `supabase/migrations/20260823220658_create_daycares.sql` coincide nuevamente con la migración aplicada en SPEC 11 y no contiene el delta de esta spec.
-- [ ] Existe exactamente una nueva migración local cuyo nombre termina en `_update_daycares_catalog.sql`.
-- [ ] El contenido de la nueva migración local coincide con el SQL aplicado mediante Supabase MCP.
-- [ ] El historial remoto conserva `20260823220658_create_daycares` sin reparación, eliminación ni reejecución y registra una versión posterior para `update_daycares_catalog`.
-- [ ] `public.daycares` contiene exactamente las columnas `id`, `name`, `address`, `created_at` y `updated_at` con el contrato indicado en el modelo de datos.
-- [ ] La restricción `daycares_name_not_blank` ya no existe y la base de datos acepta un `name` vacío cuando la operación se ejecuta con un rol administrativo autorizado.
-- [ ] `updated_at` usa `now()` por defecto, no admite nulos y no existe ningún trigger de actualización automática asociado a la tabla.
-- [ ] RLS permanece habilitado en `public.daycares`.
-- [ ] Existen exactamente las políticas `daycares_read`, `daycares_insert`, `daycares_update` y `daycares_delete` con las operaciones y condiciones acordadas.
-- [ ] Los roles `anon` y `authenticated` no tienen privilegios `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES` ni `TRIGGER` sobre `public.daycares`.
-- [ ] Una consulta a `public.daycares` como `anon` o `authenticated` no obtiene acceso aunque `daycares_read` use `true`.
-- [ ] La fila anterior con UUID `00000000-0000-0000-0000-000000000001` ya no existe.
-- [ ] `public.daycares` contiene exactamente cuatro filas con los pares `name` y `address` definidos en el modelo de datos.
-- [ ] Las cuatro filas tienen UUID no nulos y distintos generados por el valor por defecto de `id`.
-- [ ] Las cuatro filas tienen `created_at` y `updated_at` no nulos.
-- [ ] Los asesores de seguridad y rendimiento se ejecutan después de la migración y no reportan errores nuevos sin resolver causados por `public.daycares`.
-- [ ] No se modifican archivos de aplicación, dependencias, configuración de Next.js ni otras tablas del proyecto.
+- [x] `supabase/migrations/20260823220658_create_daycares.sql` coincide nuevamente con la migración aplicada en SPEC 11 y no contiene el delta de esta spec.
+- [x] Existe exactamente una nueva migración local cuyo nombre termina en `_update_daycares_catalog.sql`.
+- [x] El contenido de la nueva migración local coincide con el SQL aplicado mediante Supabase MCP.
+- [x] El historial remoto conserva `20260823220658_create_daycares` sin reparación, eliminación ni reejecución y registra una versión posterior para `update_daycares_catalog`.
+- [x] `public.daycares` contiene exactamente las columnas `id`, `name`, `address`, `created_at` y `updated_at` con el contrato indicado en el modelo de datos.
+- [x] La restricción `daycares_name_not_blank` ya no existe y la base de datos acepta un `name` vacío cuando la operación se ejecuta con un rol administrativo autorizado.
+- [x] `updated_at` usa `now()` por defecto, no admite nulos y no existe ningún trigger de actualización automática asociado a la tabla.
+- [x] RLS permanece habilitado en `public.daycares`.
+- [x] Existen exactamente las políticas `daycares_read`, `daycares_insert`, `daycares_update` y `daycares_delete` con las operaciones y condiciones acordadas.
+- [x] Los roles `anon` y `authenticated` no tienen privilegios `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `REFERENCES` ni `TRIGGER` sobre `public.daycares`.
+- [x] Una consulta a `public.daycares` como `anon` o `authenticated` no obtiene acceso aunque `daycares_read` use `true`.
+- [x] La fila anterior con UUID `00000000-0000-0000-0000-000000000001` ya no existe.
+- [x] `public.daycares` contiene exactamente cuatro filas con los pares `name` y `address` definidos en el modelo de datos.
+- [x] Las cuatro filas tienen UUID no nulos y distintos generados por el valor por defecto de `id`.
+- [x] Las cuatro filas tienen `created_at` y `updated_at` no nulos.
+- [x] Los asesores de seguridad y rendimiento se ejecutan después de la migración y no reportan errores nuevos sin resolver causados por `public.daycares`.
+- [x] No se modifican archivos de aplicación, dependencias, configuración de Next.js ni otras tablas del proyecto.
 
 ## Decisiones
 
